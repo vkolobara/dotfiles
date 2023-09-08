@@ -1,3 +1,8 @@
 require('colorizer').setup()
 require('lualine').setup()
-vim.cmd[[colorscheme onedark]]
+
+require("catppuccin").setup({
+    transparent_background = true,
+})
+
+vim.cmd.colorscheme "catppuccin"
