@@ -52,6 +52,9 @@ return require('packer').startup(function(use)
     }
 
     use 'mfussenegger/nvim-dap'
+    use 'rcarriga/nvim-dap-ui'
+
+    use 'leoluz/nvim-dap-go'
 
     use 'tpope/vim-fugitive'
     use 'tpope/vim-surround'
@@ -77,6 +80,16 @@ return require('packer').startup(function(use)
     use {
         'windwp/nvim-autopairs',
         config = function() return require('nvim-autopairs').setup() end
+    }
+
+    use 'folke/neodev.nvim'
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+            require("which-key").setup()
+        end
     }
 
     use {
