@@ -29,6 +29,10 @@ return require('packer').startup(function(use)
     use 'RishabhRD/nvim-lsputils'
 
     use 'ms-jpq/coq_nvim'
+    use {
+        'ms-jpq/coq.thirdparty',
+        branch = '3p'
+    }
 
     use {
         'nvim-treesitter/nvim-treesitter',
@@ -64,12 +68,6 @@ return require('packer').startup(function(use)
     use 'lewis6991/gitsigns.nvim'
     use 'romgrk/barbar.nvim'
 
-    use {
-        'aserowy/tmux.nvim',
-        config = function() return require('tmux').setup() end
-    }
-
-    use 'christoomey/vim-tmux-navigator'
     use 'xiyaowong/transparent.nvim'
 
     use { 'catppuccin/nvim', as = 'catppuccin' }
@@ -79,7 +77,11 @@ return require('packer').startup(function(use)
 
     use {
         'windwp/nvim-autopairs',
-        config = function() return require('nvim-autopairs').setup() end
+        config = function()
+            return require('nvim-autopairs').setup {
+                map_bs = false, map_cr = false,
+            }
+        end
     }
 
     use 'folke/neodev.nvim'
