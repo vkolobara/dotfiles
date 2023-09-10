@@ -103,6 +103,14 @@ return require('packer').startup(function(use)
 
 
     use 'tpope/vim-sleuth'
+    use {
+        'folke/todo-comments.nvim',
+        config = function()
+            require('todo-comments').setup()
+        end
+    }
+
+    use 'nvim-treesitter/nvim-treesitter-context'
 
     if packer_bootstrap then
         require('packer').sync()
