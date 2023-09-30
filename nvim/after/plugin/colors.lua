@@ -1,9 +1,6 @@
-require('colorizer').setup()
 require('lualine').setup()
 
-require("catppuccin").setup({
-    transparent_background = false,
+require('rose-pine').setup({
 })
 
-vim.cmd.colorscheme "catppuccin"
-
+vim.cmd.colorscheme("rose-pine")
