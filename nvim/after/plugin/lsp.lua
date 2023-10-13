@@ -1,6 +1,9 @@
-require("neodev").setup()
-
-local lsp_zero = require('lsp-zero')
+local lsp_zero = require('lsp-zero').preset({
+  name = 'minimal',
+  set_lsp_keymaps = true,
+  manage_vim_cmp = true,
+  suggest_lsp_servers = false
+})
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -11,7 +14,7 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
   },
-  formatting = lsp_zero.cmp_format(),
+  --formatting = lsp_zero.cmp_format(),
   mapping = cmp.mapping.preset.insert({
     ['<s-tab>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<tab>'] = cmp.mapping.select_next_item(cmp_select),
@@ -22,10 +25,12 @@ cmp.setup({
 
 
 lsp_zero.on_attach(function(client, bufnr)
-  local opts = { buffer = bufnr, remap = false }
+  local opts = { buffer = bufnr }
+  --lsp_zero.default_keymaps({buffer= bufnr})
 
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+  vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, opts)
   vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
@@ -37,12 +42,10 @@ lsp_zero.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
   vim.keymap.set("n", "<leader>rr", function() vim.lsp.buf.references() end, opts)
   vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
-  vim.keymap.set('n', '<space>f', function()
-    vim.lsp.buf.format { async = true }
-  end, opts)
 end)
 
 lsp_zero.setup();
+
 
 local null_ls = require('null-ls')
 null_ls.setup({
@@ -100,3 +103,5 @@ require('mason-lspconfig').setup_handlers {
     require('lspconfig')[server_name].setup {}
   end,
 }
+
+require("neodev").setup()
