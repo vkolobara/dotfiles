@@ -127,6 +127,32 @@ return require("lazy").setup({
     'simrat39/symbols-outline.nvim',
     'jose-elias-alvarez/null-ls.nvim',
     'jay-babu/mason-null-ls.nvim',
-    'github/copilot.vim'
-
+    'github/copilot.vim',
+    {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opts = {
+        },
+    },
+    {
+        'stevearc/dressing.nvim',
+        opts = {},
+    },
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {
+        },
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        }
+    },
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        ft = { "markdown" },
+        build = function() vim.fn["mkdp#util#install"]() end,
+    },
+    "numToStr/FTerm.nvim",
 })

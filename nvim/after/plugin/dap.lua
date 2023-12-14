@@ -11,3 +11,4 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 end
 
 require('dap-go').setup()
+require('dap.ext.vscode').load_launchjs()
