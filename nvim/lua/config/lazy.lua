@@ -154,4 +154,8 @@ return require("lazy").setup({
         build = function() vim.fn["mkdp#util#install"]() end,
     },
     "numToStr/FTerm.nvim",
+    {
+        "nkakouros-original/numbers.nvim",
+        config = function() return require('numbers').setup() end
+    }
 })
