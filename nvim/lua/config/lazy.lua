@@ -125,7 +125,7 @@ return require("lazy").setup({
     'NycRat/todo.nvim',
 
     'simrat39/symbols-outline.nvim',
-    'jose-elias-alvarez/null-ls.nvim',
+    'nvimtools/none-ls.nvim',
     'jay-babu/mason-null-ls.nvim',
     'github/copilot.vim',
     {
@@ -145,7 +145,6 @@ return require("lazy").setup({
         },
         dependencies = {
             "MunifTanjim/nui.nvim",
-            "rcarriga/nvim-notify",
         }
     },
     {
