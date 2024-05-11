@@ -60,7 +60,10 @@ return require("lazy").setup({
     },
 
     'mfussenegger/nvim-dap',
-    'rcarriga/nvim-dap-ui',
+    {
+        'rcarriga/nvim-dap-ui',
+        tag = 'v3.9.3'
+    },
 
     'leoluz/nvim-dap-go',
 
