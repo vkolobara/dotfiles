@@ -160,5 +160,9 @@ return require("lazy").setup({
     {
         "nkakouros-original/numbers.nvim",
         config = function() return require('numbers').setup() end
-    }
+    },
+    {
+        "towolf/vim-helm", ft = 'helm',
+    },
+    "b0o/schemastore.nvim"
 })

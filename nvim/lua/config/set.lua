@@ -22,4 +22,3 @@ vim.opt.termguicolors = true
 vim.opt.breakindent = true
 
 vim.opt.updatetime = 250
-

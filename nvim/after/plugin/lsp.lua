@@ -107,23 +107,50 @@ require('mason-lspconfig').setup_handlers {
 require("neodev").setup()
 
 require("lspconfig")["rust-analyzer"] = {
-          cargo = {
-            allFeatures = true,
-            loadOutDirsFromCheck = true,
-            runBuildScripts = true,
-          },
-          checkOnSave = {
-            allFeatures = true,
-            command = "clippy",
-            extraArgs = { "--no-deps" },
-          },
-          procMacro = {
-            enable = true,
-            ignored = {
-              ["async-trait"] = { "async_trait" },
-              ["napi-derive"] = { "napi" },
-              ["async-recursion"] = { "async_recursion" },
-              leptos_macro = {"component", "server"}
-            },
-          }
- }
+  cargo = {
+    allFeatures = true,
+    loadOutDirsFromCheck = true,
+    runBuildScripts = true,
+  },
+  checkOnSave = {
+    allFeatures = true,
+    command = "clippy",
+    extraArgs = { "--no-deps" },
+  },
+  procMacro = {
+    enable = true,
+    ignored = {
+      ["async-trait"] = { "async_trait" },
+      ["napi-derive"] = { "napi" },
+      ["async-recursion"] = { "async_recursion" },
+      leptos_macro = { "component", "server" }
+    },
+  }
+}
+
+local lspconfig = require("lspconfig")
+
+lspconfig.helm_ls.setup {
+  settings = {
+    ['helm-ls'] = {
+      path = 'yaml-language-server'
+    }
+  }
+}
+
+lspconfig.yamlls.setup {
+  settings = {
+    json = {
+      schemas = require('schemastore').json.schemas,
+      validate = true,
+    },
+    yaml = {
+      schemaStore = {
+        enable = false,
+        url = ""
+      },
+      schemas = require('schemastore').yaml.schemas,
+      validate = { enable = true },
+    }
+  }
+}
