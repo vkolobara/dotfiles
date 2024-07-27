@@ -78,10 +78,12 @@ return require("lazy").setup({
     'xiyaowong/transparent.nvim',
 
     {
-        'rose-pine/neovim',
-        as = 'rose-pine',
+        'rebelot/kanagawa.nvim',
+        as = 'kanagawa',
         config = function()
-            vim.cmd('colorscheme rose-pine')
+            return require('kanagawa').setup {
+                theme = "lotus"
+            }
         end
     },
 
