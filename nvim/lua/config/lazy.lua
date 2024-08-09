@@ -70,7 +70,6 @@ return require("lazy").setup({
     'tpope/vim-fugitive',
     'tpope/vim-surround',
 
-    'nvim-tree/nvim-tree.lua',
     'nvim-tree/nvim-web-devicons',
     'lewis6991/gitsigns.nvim',
     'romgrk/barbar.nvim',
@@ -132,7 +131,6 @@ return require("lazy").setup({
     'simrat39/symbols-outline.nvim',
     'nvimtools/none-ls.nvim',
     'jay-babu/mason-null-ls.nvim',
-    'github/copilot.vim',
     {
         "folke/trouble.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
