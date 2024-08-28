@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+
 return require("lazy").setup({
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
@@ -127,6 +128,18 @@ return require("lazy").setup({
     'nvim-treesitter/nvim-treesitter-context',
 
     'NycRat/todo.nvim',
+    {
+        'supermaven-inc/supermaven-nvim',
+        config = function()
+            require("supermaven-nvim").setup({
+                keymap = {
+                    accept_suggestion = "<C-j>",
+                    accept_word  = "<C-m>"
+                }
+            })
+        end,
+    },
+
 
     'simrat39/symbols-outline.nvim',
     'nvimtools/none-ls.nvim',
