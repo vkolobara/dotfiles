@@ -175,8 +175,11 @@ return require("lazy").setup({
     {
         "iamcco/markdown-preview.nvim",
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        build = "cd app && yarn install",
+        init = function()
+            vim.g.mkdp_filetypes = { "markdown" }
+        end,
         ft = { "markdown" },
-        build = function() vim.fn["mkdp#util#install"]() end,
     },
     "numToStr/FTerm.nvim",
     {
@@ -190,5 +193,25 @@ return require("lazy").setup({
     {
         "prichrd/netrw.nvim",
         config = function() require("netrw").setup() end
-    }
+    },
+    {
+        'stevearc/dressing.nvim',
+        opts = {},
+    },
+    {
+        "ariel-frischer/bmessages.nvim",
+        event = "CmdlineEnter",
+        opts = {}
+    },
+    {
+        "karb94/neoscroll.nvim",
+        config = function()
+            require('neoscroll').setup({})
+        end
+    },
+    {
+        "m4xshen/hardtime.nvim",
+        dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+        opts = {}
+    },
 })
