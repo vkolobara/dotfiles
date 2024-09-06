@@ -186,5 +186,9 @@ return require("lazy").setup({
     {
         "towolf/vim-helm", ft = 'helm',
     },
-    "b0o/schemastore.nvim"
+    "b0o/schemastore.nvim",
+    {
+        "prichrd/netrw.nvim",
+        config = function() require("netrw").setup() end
+    }
 })
