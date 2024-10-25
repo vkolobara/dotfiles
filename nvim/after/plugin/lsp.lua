@@ -127,30 +127,3 @@ require("lspconfig")["rust-analyzer"] = {
     },
   }
 }
-
-local lspconfig = require("lspconfig")
-
-lspconfig.helm_ls.setup {
-  settings = {
-    ['helm-ls'] = {
-      path = 'yaml-language-server'
-    }
-  }
-}
-
-lspconfig.yamlls.setup {
-  settings = {
-    json = {
-      schemas = require('schemastore').json.schemas,
-      validate = true,
-    },
-    yaml = {
-      schemaStore = {
-        enable = false,
-        url = ""
-      },
-      schemas = require('schemastore').yaml.schemas,
-      validate = { enable = true },
-    }
-  }
-}

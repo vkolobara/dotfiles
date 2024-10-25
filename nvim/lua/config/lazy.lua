@@ -68,7 +68,6 @@ return require("lazy").setup({
 
     'leoluz/nvim-dap-go',
 
-    'tpope/vim-fugitive',
     'tpope/vim-surround',
 
     'nvim-tree/nvim-web-devicons',
@@ -107,11 +106,6 @@ return require("lazy").setup({
             vim.o.timeoutlen = 300
             require("which-key").setup()
         end
-    },
-
-    {
-        "akinsho/toggleterm.nvim",
-        config = function() return require('toggleterm').setup() end
     },
 
     { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
@@ -154,12 +148,6 @@ return require("lazy").setup({
     'nvimtools/none-ls.nvim',
     'jay-babu/mason-null-ls.nvim',
     {
-        "folke/trouble.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        opts = {
-        },
-    },
-    {
         'stevearc/dressing.nvim',
         opts = {},
     },
@@ -181,18 +169,12 @@ return require("lazy").setup({
         end,
         ft = { "markdown" },
     },
-    "numToStr/FTerm.nvim",
     {
         "nkakouros-original/numbers.nvim",
         config = function() return require('numbers').setup() end
     },
     {
         "towolf/vim-helm", ft = 'helm',
-    },
-    "b0o/schemastore.nvim",
-    {
-        "prichrd/netrw.nvim",
-        config = function() require("netrw").setup() end
     },
     {
         'stevearc/dressing.nvim',
@@ -240,5 +222,39 @@ return require("lazy").setup({
                 desc = "Quickfix List (Trouble)",
             },
         },
+    },
+    {
+        "stevearc/oil.nvim",
+        opts = {},
+        config = function()
+            require("oil").setup()
+        end
+    },
+    {
+        "j-hui/fidget.nvim",
+        opts = {},
+        config = function()
+            require("fidget").setup()
+        end
+    },
+    {
+        "kevinhwang91/nvim-bqf",
+        build = ':TSUpdate'
+    },
+    {
+        "NeogitOrg/neogit",
+        dependencies = {
+            "nvim-lua/plenary.nvim",  -- required
+            "sindrets/diffview.nvim", -- optional - Diff integration
+        },
+        config = true
+    },
+    {
+        "ray-x/lsp_signature.nvim",
+        event = "VeryLazy",
+        opts = {},
+        config = function(_, opts) require 'lsp_signature'.setup(opts) end
     }
+
+
 })
