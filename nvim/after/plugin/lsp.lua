@@ -6,7 +6,7 @@ local lsp_zero = require('lsp-zero').preset({
 })
 
 local cmp = require('cmp')
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
+local cmp_action = require('lsp-zero').cmp_action()
 
 cmp.setup({
   sources = {
@@ -16,8 +16,8 @@ cmp.setup({
   },
   --formatting = lsp_zero.cmp_format(),
   mapping = cmp.mapping.preset.insert({
-    ['<s-tab>'] = cmp.mapping.select_prev_item(cmp_select),
-    ['<tab>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<Tab>'] = cmp_action.luasnip_supertab(),
+    ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ['<C-Space>'] = cmp.mapping.complete(),
   }),

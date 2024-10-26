@@ -1,4 +1,4 @@
-vim.opt.clipboard =  "unnamedplus"
+vim.opt.clipboard = "unnamedplus"
 vim.g.mapleader = " "
 
 -- move around lines in visual mode
@@ -25,4 +25,3 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 -- format code
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
-
