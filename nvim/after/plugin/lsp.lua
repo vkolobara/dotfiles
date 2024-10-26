@@ -46,18 +46,6 @@ end)
 
 lsp_zero.setup();
 
-
-local null_ls = require('null-ls')
-null_ls.setup({
-  sources = {}
-})
-
-require('mason-null-ls').setup({
-  ensure_installed = nil,
-  automatic_installation = false,
-  handlers = {}
-})
-
 require('mason').setup()
 require('mason-lspconfig').setup {
   automatic_installation = true,
