@@ -300,5 +300,10 @@ return require("lazy").setup(
             dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
             opts = {}
         },
+        {
+            'echasnovski/mini.ai',
+            version = false,
+            config = function() require('mini.ai').setup() end
+        }
     }
 )
