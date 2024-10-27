@@ -1,9 +1,11 @@
 mkdir -p ~/.config
 ln -sf ~/dotfiles/tmux ~/.config/
 ln -sf ~/dotfiles/nvim ~/.config/
+ln -sf ~/dotfiles/wezterm ~/.config/
 
 brew install tmux bash zoxide fzf
 brew install fd ripgrep
+brew install wezterm
 
 git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 tmux source ~/.config/tmux/tmux.conf
