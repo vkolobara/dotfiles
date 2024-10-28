@@ -230,7 +230,6 @@ return require("lazy").setup(
         },
         {
             "kevinhwang91/nvim-bqf",
-            build = ':TSUpdate'
         },
         {
             "NeogitOrg/neogit",
