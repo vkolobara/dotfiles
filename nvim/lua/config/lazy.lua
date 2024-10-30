@@ -275,7 +275,11 @@ return require("lazy").setup(
         {
             'stevearc/conform.nvim',
             opts = {},
-            config = function() require('conform').setup({ format_on_save = { timeout_mls = 500, lsp_format = "fallback" } }) end
+            config = function() require('conform').setup({
+                formatters_by_ft = {
+                    python = {"isort", "black"},
+                },
+            }) end
         },
         {
             'mistweaverco/kulala.nvim',
@@ -293,11 +297,6 @@ return require("lazy").setup(
             dependencies = {
                 'nvim-telescope/telescope-fzf-native.nvim'
             }
-        },
-        {
-            "m4xshen/hardtime.nvim",
-            dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-            opts = {}
         },
         {
             'echasnovski/mini.ai',

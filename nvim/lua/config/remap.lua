@@ -23,5 +23,11 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 -- replace current word
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
--- format code
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+ --format code
+--vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+
+vim.keymap.set("n", "<leader>f", function()
+  require("conform").format({ async = true })
+end, { desc = "Format code" })
+
+
