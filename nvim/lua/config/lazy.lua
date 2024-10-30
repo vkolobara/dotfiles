@@ -278,6 +278,7 @@ return require("lazy").setup(
             config = function() require('conform').setup({
                 formatters_by_ft = {
                     python = {"isort", "black"},
+                    go = {"gofmt"},
                 },
             }) end
         },

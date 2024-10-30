@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local sessionizer = require("sessionizer")
 
 local config = wezterm.config_builder()
 
@@ -27,12 +28,16 @@ config.leader = { key = "b", mods = "CTRL" }
 
 config.keys = {
     {
-        key = 't',
-        mods = 'LEADER',
+        key = "t",
+        mods = "LEADER",
+        action = wezterm.action_callback(sessionizer.toggle)
+    },
+    {
+        key = "T",
+        mods = "LEADER",
         action = act.ShowLauncherArgs {
-            flags = 'FUZZY|WORKSPACES',
-        },
-
+            flags = 'FUZZY|WORKSPACES'
+        }
     },
     {
         key = 'w',
@@ -168,7 +173,7 @@ config.keys = {
         key = "-",
         mods = "CTRL",
         action = act.DecreaseFontSize
-    }
+    },
 }
 
 return config
