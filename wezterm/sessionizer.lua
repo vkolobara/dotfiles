@@ -14,7 +14,7 @@ M.toggle = function(window, pane)
 		"^.git$",
 		"--max-depth=4",
 		"--prune",
-		os.getenv("HOME") .. "/work"
+		os.getenv("HOME") .. "/"
 	})
 
 	if not success then
