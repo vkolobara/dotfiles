@@ -73,11 +73,8 @@ return require("lazy").setup(
 
         {
             'windwp/nvim-autopairs',
-            config = function()
-                return require('nvim-autopairs').setup {
-                    map_bs = false, map_cr = false,
-                }
-            end
+            event = 'InsertEnter',
+            config = true,
         },
 
         'folke/neodev.nvim',
