@@ -18,30 +18,11 @@ return require("lazy").setup(
     {
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
+        'hrsh7th/nvim-cmp',
+        'hrsh7th/cmp-nvim-lsp',
+        'neovim/nvim-lspconfig',
 
         'nvim-lua/lsp-status.nvim',
-        {
-            'VonHeikemen/lsp-zero.nvim',
-            branch = 'v3.x',
-            dependencies = {
-                -- LSP Support
-                { 'neovim/nvim-lspconfig' },
-                { 'williamboman/mason.nvim' },
-                { 'williamboman/mason-lspconfig.nvim' },
-
-                -- Autocompletion
-                { 'hrsh7th/nvim-cmp' },
-                { 'hrsh7th/cmp-buffer' },
-                { 'hrsh7th/cmp-path' },
-                { 'saadparwaiz1/cmp_luasnip' },
-                { 'hrsh7th/cmp-nvim-lsp' },
-                { 'hrsh7th/cmp-nvim-lua' },
-
-                -- Snippets
-                { 'L3MON4D3/LuaSnip' },
-                { 'rafamadriz/friendly-snippets' },
-            }
-        },
 
         'RishabhRD/popfix',
         'RishabhRD/nvim-lsputils',
@@ -112,7 +93,6 @@ return require("lazy").setup(
         { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
 
 
-        'tpope/vim-sleuth',
         {
             'folke/todo-comments.nvim',
             config = function()
@@ -122,7 +102,6 @@ return require("lazy").setup(
 
         'nvim-treesitter/nvim-treesitter-context',
 
-        'NycRat/todo.nvim',
         {
             'supermaven-inc/supermaven-nvim',
             config = function()
@@ -145,8 +124,6 @@ return require("lazy").setup(
         },
 
 
-        'simrat39/symbols-outline.nvim',
-        'nvimtools/none-ls.nvim',
         {
             'stevearc/dressing.nvim',
             opts = {},
@@ -166,16 +143,6 @@ return require("lazy").setup(
         },
         {
             "towolf/vim-helm", ft = 'helm',
-        },
-        {
-            'stevearc/dressing.nvim',
-            opts = {},
-        },
-        {
-            "karb94/neoscroll.nvim",
-            config = function()
-                require('neoscroll').setup({})
-            end
         },
         {
             "folke/trouble.nvim",
@@ -225,7 +192,7 @@ return require("lazy").setup(
             "j-hui/fidget.nvim",
             opts = {},
             config = function()
-                require("fidget").setup()
+                require("fidget").setup({})
             end
         },
         {
@@ -264,21 +231,13 @@ return require("lazy").setup(
             opts = {}
         },
         {
-            'nvimdev/dashboard-nvim',
-            event = 'VimEnter',
-            config = function()
-                require('dashboard').setup {
-                }
-            end,
-            dependencies = { { 'nvim-tree/nvim-web-devicons' } }
-        },
-        {
             'stevearc/conform.nvim',
             opts = {},
             config = function() require('conform').setup({
                 formatters_by_ft = {
                     python = {"isort", "black"},
                     go = {"gofmt"},
+                    elixir = {"mix", args="format", "--stdin", "$FILENAME"},
                 },
             }) end
         },
@@ -303,6 +262,13 @@ return require("lazy").setup(
             'echasnovski/mini.ai',
             version = false,
             config = function() require('mini.ai').setup() end
+        },
+        {
+            "L3MON4D3/LuaSnip",
+            -- follow latest release.
+            version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+            -- install jsregexp (optional!).
+            build = "make install_jsregexp"
         }
     }
 )

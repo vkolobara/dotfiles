@@ -1,12 +1,37 @@
-local lsp_zero = require('lsp-zero').preset({
-  name = 'minimal',
-  set_lsp_keymaps = true,
-  manage_vim_cmp = true,
-  suggest_lsp_servers = false
-})
+vim.opt.signcolumn = "yes"
+
+local lspconfig_defaults = require('lspconfig').util.default_config
+
+lspconfig_defaults.capabilities = vim.tbl_deep_extend(
+  'force',
+  lspconfig_defaults.capabilities,
+  require('cmp_nvim_lsp').default_capabilities()
+)
 
 local cmp = require('cmp')
-local cmp_action = require('lsp-zero').cmp_action()
+local luasnip = require('luasnip')
+
+vim.api.nvim_create_autocmd('LspAttach', {
+    desc = 'Enable LSP actions',
+
+    callback = function(event)
+      local opts = { buffer = event.buf }
+      vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+      vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+      vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, opts)
+      vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
+      vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+      vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+      vim.keymap.set("i", "<C-k>", function() vim.lsp.buf.signature_help() end, opts)
+      vim.keymap.set("n", "<leader>ws", function() vim.lsp.buf.workspace_symbol() end, opts)
+      vim.keymap.set("n", "<leader>e", function() vim.diagnostic.open_float() end, opts)
+      vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+      vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+      vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
+      vim.keymap.set("n", "<leader>rr", function() vim.lsp.buf.references() end, opts)
+      vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
+    end,
+})
 
 cmp.setup({
   sources = {
@@ -14,44 +39,40 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
   },
-  --formatting = lsp_zero.cmp_format(),
+  snippet = {
+    expand = function(args)
+      vim.snippet.expand(args.body)
+    end,
+  },
   mapping = cmp.mapping.preset.insert({
-    ['<Tab>'] = cmp_action.luasnip_supertab(),
-    ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable(1) then
+        luasnip.expand_or_jump(1)
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ['<C-Space>'] = cmp.mapping.complete(),
   }),
 })
 
 
-lsp_zero.on_attach(function(client, bufnr)
-  local opts = { buffer = bufnr }
-  --lsp_zero.default_keymaps({buffer= bufnr})
-
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-  vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, opts)
-  vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
-  vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-  vim.keymap.set("i", "<C-k>", function() vim.lsp.buf.signature_help() end, opts)
-  vim.keymap.set("n", "<leader>ws", function() vim.lsp.buf.workspace_symbol() end, opts)
-  vim.keymap.set("n", "<leader>e", function() vim.diagnostic.open_float() end, opts)
-  vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-  vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-  vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
-  vim.keymap.set("n", "<leader>rr", function() vim.lsp.buf.references() end, opts)
-  vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
-end)
-
-lsp_zero.setup();
-
 require('mason').setup()
 require('mason-lspconfig').setup {
   automatic_installation = true,
 }
-
-vim.g.coq_settings = { keymap = { recommended = false } }
 
 local remap = vim.api.nvim_set_keymap
 local npairs = require('nvim-autopairs')
