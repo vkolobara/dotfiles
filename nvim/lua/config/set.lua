@@ -22,3 +22,7 @@ vim.opt.termguicolors = true
 vim.opt.breakindent = true
 
 vim.opt.updatetime = 250
+
+
+vim.opt.colorcolumn = "80"
+
