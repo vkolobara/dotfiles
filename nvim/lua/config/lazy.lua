@@ -266,6 +266,22 @@ return require("lazy").setup(
             version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
             -- install jsregexp (optional!).
             build = "make install_jsregexp"
+        },
+        {
+            "folke/snacks.nvim",
+            priority = 1000,
+            lazy = false,
+            opts = {
+                bigfile = { enabled = true },
+                quickfile = { enabled = true },
+                lazygit = { configure = true },
+            },
+            keys = {
+                { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
+                { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse" },
+                { "<leader>gl", function() Snacks.lazygit.log() end, desc = "Git Log" },
+            }
+
         }
     }
 )
