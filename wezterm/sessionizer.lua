@@ -3,7 +3,15 @@ local act = wezterm.action
 
 local M = {}
 
-local fd = "/opt/homebrew/bin/fd"
+function file_exists(name)
+   local f=io.open(name,"r")
+   if f~=nil then io.close(f) return true else return false end
+end
+
+local fd = "fd"
+if file_exists("/opt/homebrew/bin/fd") then
+	fd = "/opt/homebrew/bin/fd"
+end
 
 M.toggle = function(window, pane)
 	local projects = {}
