@@ -3,7 +3,7 @@ local act = wezterm.action
 
 local M = {}
 
-local fd = "fd"
+local fd = "/opt/homebrew/bin/fd"
 
 M.toggle = function(window, pane)
 	local projects = {}

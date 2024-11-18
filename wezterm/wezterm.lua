@@ -219,6 +219,9 @@ config.keys = {
         mods = "CTRL",
         action = act.DecreaseFontSize
     },
+    {
+        key = "L", mods = 'CTRL', action = act.ShowDebugOverlay
+    }
 }
 
 return config
