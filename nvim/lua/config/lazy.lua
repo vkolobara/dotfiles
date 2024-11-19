@@ -57,15 +57,11 @@ return require("lazy").setup(
         'romgrk/barbar.nvim',
 
         'xiyaowong/transparent.nvim',
-
         {
-            'rebelot/kanagawa.nvim',
-            as = 'kanagawa',
-            config = function()
-                return require('kanagawa').setup {
-                    theme = "lotus"
-                }
-            end
+            "bluz71/vim-moonfly-colors",
+            name = "moonfly",
+            lazy = false,
+            priority = 1000,
         },
 
         'preservim/nerdcommenter',
