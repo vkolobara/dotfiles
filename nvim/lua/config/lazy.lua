@@ -111,8 +111,6 @@ return require("lazy").setup(
                     { noremap = true, silent = true })
                 vim.keymap.set('i', '<c-h>', completion_preview.on_accept_suggestion_word,
                     { noremap = true, silent = true })
-                vim.keymap.set('i', '<c-]>', completion_preview.on_accept_suggestion_word,
-                    { noremap = true, silent = true })
             end,
         },
 
