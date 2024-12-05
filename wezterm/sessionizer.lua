@@ -22,6 +22,8 @@ M.toggle = function(window, pane)
 		"^.git$",
 		"--max-depth=4",
 		"--prune",
+        "--exclude",
+        ".cache",
 		os.getenv("HOME") .. "/"
 	})
 
