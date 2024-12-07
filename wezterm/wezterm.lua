@@ -171,22 +171,22 @@ config.keys = {
     {
         key = "J",
         mods = "LEADER",
-        action = act.AdjustPaneSize { 'Down', 5 }
+        action = act.AdjustPaneSize { 'Down', 10 }
     },
     {
         key = "K",
         mods = "LEADER",
-        action = act.AdjustPaneSize { 'Up', 5 }
+        action = act.AdjustPaneSize { 'Up', 10 }
     },
     {
         key = "H",
         mods = "LEADER",
-        action = act.AdjustPaneSize { 'Left', 5 }
+        action = act.AdjustPaneSize { 'Left', 10 }
     },
     {
         key = "L",
         mods = "LEADER",
-        action = act.AdjustPaneSize { 'Right', 5 }
+        action = act.AdjustPaneSize { 'Right', 10 }
     },
     {
         key = "x",
