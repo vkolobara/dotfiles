@@ -224,13 +224,18 @@ return require("lazy").setup(
         {
             'stevearc/conform.nvim',
             opts = {},
-            config = function() require('conform').setup({
-                formatters_by_ft = {
-                    python = {"isort", "black"},
-                    go = {"gofmt"},
-                    elixir = {"mix", args="format", "--stdin", "$FILENAME"},
-                },
-            }) end
+            config = function()
+                require('conform').setup({
+                    formatters_by_ft = {
+                        python = { "isort", "black" },
+                        go = { "gofmt" },
+                        elixir = { "mix", args = "format", "--stdin", "$FILENAME" },
+                    },
+                    default_format_opts = {
+                        lsp_format = "fallback",
+                    },
+                })
+            end
         },
         {
             'mistweaverco/kulala.nvim',
@@ -271,8 +276,8 @@ return require("lazy").setup(
                 lazygit = { configure = true },
             },
             keys = {
-                { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
-                { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse" },
+                { "<leader>gg", function() Snacks.lazygit() end,     desc = "Lazygit" },
+                { "<leader>gB", function() Snacks.gitbrowse() end,   desc = "Git Browse" },
                 { "<leader>gl", function() Snacks.lazygit.log() end, desc = "Git Log" },
             }
 
