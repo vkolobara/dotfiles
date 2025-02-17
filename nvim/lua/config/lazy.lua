@@ -95,25 +95,6 @@ return require("lazy").setup(
 
         'nvim-treesitter/nvim-treesitter-context',
 
-        {
-            'supermaven-inc/supermaven-nvim',
-            config = function()
-                require("supermaven-nvim").setup({
-                    keymaps = {
-                        accept_suggestion = "<C-j>",
-                        clear_suggestion  = "<C-]>",
-                        accept_word       = "<C-J>",
-                    },
-                    disable_keymaps = true,
-                })
-                local completion_preview = require("supermaven-nvim.completion_preview")
-                vim.keymap.set('i', '<c-j>', completion_preview.on_accept_suggestion,
-                    { noremap = true, silent = true })
-                vim.keymap.set('i', '<c-h>', completion_preview.on_accept_suggestion_word,
-                    { noremap = true, silent = true })
-            end,
-        },
-
 
         {
             'stevearc/dressing.nvim',
