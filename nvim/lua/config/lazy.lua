@@ -35,7 +35,11 @@ return require("lazy").setup(
         {
             'nvim-telescope/telescope.nvim',
             branch = '0.1.x',
-            dependencies = { { 'nvim-lua/plenary.nvim' } }
+            dependencies = { { 'nvim-lua/plenary.nvim' }, }
+        },
+        {
+            'tiagovla/scope.nvim',
+            config = true,
         },
 
         {
@@ -54,8 +58,9 @@ return require("lazy").setup(
 
         'nvim-tree/nvim-web-devicons',
         'lewis6991/gitsigns.nvim',
-        'romgrk/barbar.nvim',
-
+        {
+            'romgrk/barbar.nvim',
+        },
         'xiyaowong/transparent.nvim',
         {
             "bluz71/vim-moonfly-colors",

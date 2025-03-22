@@ -6,3 +6,5 @@ vim.keymap.set('n', '<leader>pb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>ps', function()
     builtin.grep_string({ search = vim.fn.input("") })
 end)
+
+require("telescope").load_extension("scope")
