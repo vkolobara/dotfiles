@@ -5,7 +5,7 @@ local config = wezterm.config_builder()
 
 config.disable_default_key_bindings = true
 
-config.font = wezterm.font("Hack Nerd Font")
+config.font = wezterm.font("FiraCode Nerd Font")
 config.hide_tab_bar_if_only_one_tab = true
 config.color_scheme = 'Moonfly'
 config.color_scheme = 'nord'
