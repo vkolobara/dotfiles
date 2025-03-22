@@ -68,6 +68,11 @@ return require("lazy").setup(
             lazy = false,
             priority = 1000,
         },
+        {
+            "shaunsingh/nord.nvim",
+            lazy = false,
+            priority = 1000,
+        },
 
         'preservim/nerdcommenter',
         'lukas-reineke/indent-blankline.nvim',
