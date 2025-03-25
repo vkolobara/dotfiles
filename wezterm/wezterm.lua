@@ -10,8 +10,6 @@ config.hide_tab_bar_if_only_one_tab = true
 config.color_scheme = 'Moonfly'
 config.color_scheme = 'nord'
 
-config.window_decorations = "NONE"
-
 config.use_fancy_tab_bar = true
 config.tab_max_width = 32
 config.tab_bar_at_bottom = true
