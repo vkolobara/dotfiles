@@ -75,8 +75,13 @@ return require("lazy").setup(
         },
 
         'preservim/nerdcommenter',
-        'lukas-reineke/indent-blankline.nvim',
 
+        {
+         'lukas-reineke/indent-blankline.nvim',
+         config = function() 
+             require('ibl').setup()
+         end
+        },
         {
             'windwp/nvim-autopairs',
             event = 'InsertEnter',
@@ -295,6 +300,12 @@ return require("lazy").setup(
             'CopilotC-Nvim/CopilotChat.nvim',
             build = "make tiktoken",
             opts = {}
+        },
+        {
+            "Cliffback/netcoredbg-macOS-arm64.nvim",
+        },
+        {
+            "folke/zen-mode.nvim"
         }
     }
 )

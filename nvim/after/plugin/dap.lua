@@ -26,3 +26,5 @@ vim.keymap.set('n', '<Leader>B', function() dap.set_breakpoint() end)
 
 require('dap-go').setup()
 require('dap.ext.vscode').load_launchjs()
+require('netcoredbg-macOS-arm64').setup(dap)
+
