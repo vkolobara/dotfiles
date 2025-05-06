@@ -4,6 +4,8 @@ local sessionizer = require("sessionizer")
 local config = wezterm.config_builder()
 
 config.disable_default_key_bindings = true
+config.enable_wayland = false
+config.adjust_window_size_when_changing_font_size = false
 
 config.font = wezterm.font("FiraCode Nerd Font")
 config.hide_tab_bar_if_only_one_tab = true
