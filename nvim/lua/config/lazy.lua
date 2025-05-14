@@ -108,13 +108,6 @@ return require("lazy").setup(
             end
         },
 
-        'nvim-treesitter/nvim-treesitter-context',
-
-
-        {
-            'stevearc/dressing.nvim',
-            opts = {},
-        },
         {
             "folke/noice.nvim",
             event = "VeryLazy",

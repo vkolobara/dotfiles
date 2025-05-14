@@ -104,3 +104,5 @@ require("lspconfig")["rust-analyzer"] = {
     },
   }
 }
+
+require("lspconfig")["postgtres_lsp"].setup()
