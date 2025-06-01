@@ -73,14 +73,22 @@ return require("lazy").setup(
             lazy = false,
             priority = 1000,
         },
+        {
+            'AlexvZyl/nordic.nvim',
+            lazy = false,
+            priority = 1000,
+            config = function()
+                require('nordic').load()
+            end
+        },
 
         'preservim/nerdcommenter',
 
         {
-         'lukas-reineke/indent-blankline.nvim',
-         config = function() 
-             require('ibl').setup()
-         end
+            'lukas-reineke/indent-blankline.nvim',
+            config = function()
+                require('ibl').setup()
+            end
         },
         {
             'windwp/nvim-autopairs',
