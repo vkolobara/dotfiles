@@ -31,7 +31,10 @@ return require("lazy").setup(
             'nvim-treesitter/nvim-treesitter',
             build = ':TSUpdate'
         },
-
+        {
+            'stevearc/dressing.nvim',
+            opts = {},
+        },
         {
             'nvim-telescope/telescope.nvim',
             branch = '0.1.x',
