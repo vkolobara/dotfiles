@@ -240,10 +240,6 @@ return require("lazy").setup(
             end
         },
         {
-            'mistweaverco/kulala.nvim',
-            opts = {}
-        },
-        {
             "danymat/neogen",
             config = true,
             -- Uncomment next line if you want to follow only stable versions
@@ -310,6 +306,15 @@ return require("lazy").setup(
         },
         {
             "folke/zen-mode.nvim"
+        },
+        {
+            "seblyng/roslyn.nvim",
+            ft = "cs",
+            ---@module 'roslyn.config'
+            ---@type RoslynNvimConfig
+            opts = {
+                -- your configuration comes here; leave empty for default settings
+            },
         }
     }
 )
