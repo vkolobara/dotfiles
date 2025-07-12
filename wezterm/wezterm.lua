@@ -92,7 +92,7 @@ config.keys = {
         key = 'p', mods = 'LEADER', action = act.SwitchWorkspaceRelative(-1)
     },
     {
-        key = '|',
+        key = '/',
         mods = 'LEADER',
         action = act.SplitHorizontal { domain = 'CurrentPaneDomain' }
     },
