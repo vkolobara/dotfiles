@@ -9,8 +9,6 @@ config.adjust_window_size_when_changing_font_size = false
 
 config.font = wezterm.font("FiraCode Nerd Font")
 config.hide_tab_bar_if_only_one_tab = true
-config.color_scheme = 'Moonfly'
-config.color_scheme = 'nord'
 config.color_scheme = 'tokyonight'
 
 config.use_fancy_tab_bar = true
