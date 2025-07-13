@@ -5,7 +5,7 @@ mkdir -p ~/.config
 ln -sf ~/dotfiles/tmux ~/.config/
 ln -sf ~/dotfiles/nvim ~/.config/
 ln -sf ~/dotfiles/wezterm ~/.config/
-
+ln -sf ~/dotfiles/newsboat ~/.config/
 
 arch=$(uname -m)
 
