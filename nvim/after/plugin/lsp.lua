@@ -85,8 +85,6 @@ require('mason-lspconfig').setup {
   },
 }
 
-require("neodev").setup()
-
 require("lspconfig")["rust-analyzer"] = {
   cargo = {
     allFeatures = true,

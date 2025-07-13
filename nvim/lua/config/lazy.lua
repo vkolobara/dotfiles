@@ -66,23 +66,13 @@ return require("lazy").setup(
         },
         'xiyaowong/transparent.nvim',
         {
-            "bluz71/vim-moonfly-colors",
-            name = "moonfly",
-            lazy = false,
-            priority = 1000,
-        },
-        {
-            "shaunsingh/nord.nvim",
-            lazy = false,
-            priority = 1000,
-        },
-        {
-            'AlexvZyl/nordic.nvim',
-            lazy = false,
-            priority = 1000,
-            config = function()
-                require('nordic').load()
-            end
+            "tiagovla/tokyodark.nvim",
+            opts = {
+                -- custom options here
+            },
+            config = function(_, opts)
+                require("tokyodark").setup(opts) -- calling setup is optional
+            end,
         },
 
         'preservim/nerdcommenter',
@@ -97,16 +87,6 @@ return require("lazy").setup(
             'windwp/nvim-autopairs',
             event = 'InsertEnter',
             config = true,
-        },
-
-        'folke/neodev.nvim',
-        {
-            "folke/which-key.nvim",
-            config = function()
-                vim.o.timeout = true
-                vim.o.timeoutlen = 300
-                require("which-key").setup()
-            end
         },
 
         { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
@@ -188,14 +168,6 @@ return require("lazy").setup(
         },
         {
             "kevinhwang91/nvim-bqf",
-        },
-        {
-            "NeogitOrg/neogit",
-            dependencies = {
-                "nvim-lua/plenary.nvim",  -- required
-                "sindrets/diffview.nvim", -- optional - Diff integration
-            },
-            config = true
         },
         {
             'kristijanhusak/vim-dadbod-ui',
@@ -315,6 +287,9 @@ return require("lazy").setup(
             opts = {
                 -- your configuration comes here; leave empty for default settings
             },
+        },
+        {
+            "sindrets/diffview.nvim"
         }
     }
 )
