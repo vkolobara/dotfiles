@@ -198,6 +198,7 @@ return require("lazy").setup(
             opts = {},
             config = function()
                 require('conform').setup({
+                    log_level = vim.log.levels.DEBUG,
                     formatters_by_ft = {
                         python = { "isort", "black" },
                         cs = { "csharpier" },
@@ -209,6 +210,10 @@ return require("lazy").setup(
                         lsp_format = "fallback",
                     },
                 })
+                require('conform').formatters.csharpier = {
+                    command  = "csharpier",
+                    args = { "format", "--write-stdout", "$FILENAME" }
+                }
             end
         },
         {
