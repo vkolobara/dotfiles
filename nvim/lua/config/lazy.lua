@@ -198,7 +198,10 @@ return require("lazy").setup(
             opts = {},
             config = function()
                 require('conform').setup({
-                    log_level = vim.log.levels.DEBUG,
+                    format_on_save = {
+                        timeout_ms = 500,
+                        lsp_format = "fallback"
+                    },
                     formatters_by_ft = {
                         python = { "isort", "black" },
                         cs = { "csharpier" },
@@ -211,8 +214,8 @@ return require("lazy").setup(
                     },
                 })
                 require('conform').formatters.csharpier = {
-                    command  = "csharpier",
-                    args = { "format", "--write-stdout", "$FILENAME" }
+                    command  = "dotnet",
+                    args = { "tool", "run", "csharpier", "format", "--write-stdout", "$FILENAME" }
                 }
             end
         },
