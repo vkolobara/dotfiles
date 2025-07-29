@@ -270,7 +270,10 @@ return require("lazy").setup(
             end
         },
         {
-            'github/copilot.vim'
+            'github/copilot.vim',
+            config = function()
+                vim.g.copilot_enabled = false
+            end
         },
         {
             'CopilotC-Nvim/CopilotChat.nvim',
