@@ -36,9 +36,8 @@ return require("lazy").setup(
             opts = {},
         },
         {
-            'nvim-telescope/telescope.nvim',
-            branch = '0.1.x',
-            dependencies = { { 'nvim-lua/plenary.nvim' }, }
+            "ibhagwan/fzf-lua",
+            opts = {}
         },
         {
             'tiagovla/scope.nvim',
@@ -64,7 +63,6 @@ return require("lazy").setup(
         {
             'romgrk/barbar.nvim',
         },
-        'xiyaowong/transparent.nvim',
         {
             "tiagovla/tokyodark.nvim",
             opts = {
@@ -75,7 +73,9 @@ return require("lazy").setup(
             end,
         },
 
-        'preservim/nerdcommenter',
+        {
+            'preservim/nerdcommenter',
+        },
 
         {
             'lukas-reineke/indent-blankline.nvim',
@@ -90,7 +90,6 @@ return require("lazy").setup(
         },
 
         { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
-
 
         {
             'folke/todo-comments.nvim',
@@ -170,28 +169,10 @@ return require("lazy").setup(
             "kevinhwang91/nvim-bqf",
         },
         {
-            'kristijanhusak/vim-dadbod-ui',
-            dependencies = {
-                { 'tpope/vim-dadbod',                     lazy = true },
-                { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true }, -- Optional
-            },
-            cmd = {
-                'DBUI',
-                'DBUIToggle',
-                'DBUIAddConnection',
-                'DBUIFindBuffer',
-            },
-            init = function()
-                -- Your DBUI configuration
-                vim.g.db_ui_use_nerd_fonts = 1
-            end,
-        },
-        {
-            'MeanderingProgrammer/render-markdown.nvim',
-            dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-            ---@module 'render-markdown'
-            ---@type render.md.UserConfig
-            opts = {}
+            'iamcco/markdown-preview.nvim',
+            cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+            ft = { "markdown" },
+            build = "cd app && yarn install"
         },
         {
             'stevearc/conform.nvim',
@@ -210,8 +191,8 @@ return require("lazy").setup(
                     },
                 })
                 require('conform').formatters.csharpier = {
-                    command  = "dotnet",
-                    args = { "tool", "run", "csharpier", "format", "--write-stdout", "$FILENAME" }
+                    command = "dotnet",
+                    args    = { "tool", "run", "csharpier", "format", "--write-stdout", "$FILENAME" }
                 }
             end
         },
@@ -223,10 +204,6 @@ return require("lazy").setup(
         },
         {
             'Bekaboo/dropbar.nvim',
-            -- optional, but required for fuzzy finder support
-            dependencies = {
-                'nvim-telescope/telescope-fzf-native.nvim'
-            }
         },
         {
             'echasnovski/mini.ai',
@@ -257,34 +234,13 @@ return require("lazy").setup(
 
         },
         {
-            'pwntester/octo.nvim',
-            requires = {
-                'nvim-lua/plenary.nvim',
-                'nvim-telescope/telescope.nvim',
-                -- OR 'ibhagwan/fzf-lua',
-                -- OR 'folke/snacks.nvim',
-                'nvim-tree/nvim-web-devicons',
-            },
-            config = function()
-                require "octo".setup()
-            end
-        },
-        {
             'github/copilot.vim',
             config = function()
                 vim.g.copilot_enabled = false
             end
         },
         {
-            'CopilotC-Nvim/CopilotChat.nvim',
-            build = "make tiktoken",
-            opts = {}
-        },
-        {
             "Cliffback/netcoredbg-macOS-arm64.nvim",
-        },
-        {
-            "folke/zen-mode.nvim"
         },
         {
             "seblyng/roslyn.nvim",
