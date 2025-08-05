@@ -91,6 +91,9 @@ require("lazy").setup({
 
           ['<Tab>'] = { 'select_next', 'fallback' },
           ['<S-Tab>'] = { 'select_prev', 'fallback' },
+          ['<C-Tab>'] = { 'snippet_forward', 'fallback' },
+          ['<C-S-Tab>'] = { 'snippet_backward', 'fallback' },
+
           ['<Esc>'] = { 'cancel', 'fallback' },
           ['<CR>'] = { 'accept', 'fallback' },
           ['<C-space>'] = { 'show', 'fallback' },
@@ -101,8 +104,10 @@ require("lazy").setup({
         },
 
         completion = {
-          documentation = { auto_show =  true},
+          keyword = { range = "full" },
+          documentation = { auto_show = true },
           ghost_text = { enabled = true },
+          accept = { auto_brackets = { enabled = false }, },
         },
 
         sources = {
