@@ -167,7 +167,7 @@ require("lazy").setup({
       },
       keys = {
         { "<leader>gg", function() Snacks.lazygit() end,     desc = "Lazygit" },
-        { "<leader>gb", function() Snacks.gitbrowse() end,   desc = "Git Browse" },
+        { "<leader>gB", function() Snacks.gitbrowse() end,   desc = "Git Browse" },
         { "<leader>gl", function() Snacks.lazygit.log() end, desc = "Git Log" },
       }
     },
@@ -192,7 +192,27 @@ require("lazy").setup({
     },
     {
       "github/copilot.vim"
+    },
+    {
+      'numToStr/Comment.nvim',
+      config = function()
+        require('Comment').setup({
+          toggler = {
+            line = '<leader>gc',
+            block = '<leader>gb',
+          },
+          opleader = {
+            line = '<leader>gc',
+            block = '<leader>gb',
+          },
+          mappings = {
+            basic = true,
+            extra = false,
+          },
+        })
+      end
     }
+
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
