@@ -30,12 +30,12 @@ config.leader = { key = "b", mods = "CTRL" }
 
 config.keys = {
     {
-        key = "t",
+        key = "T",
         mods = "LEADER",
         action = wezterm.action_callback(sessionizer.toggle)
     },
     {
-        key = "T",
+        key = "t",
         mods = "LEADER",
         action = act.ShowLauncherArgs {
             flags = 'FUZZY|WORKSPACES'
