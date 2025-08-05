@@ -1,5 +1,6 @@
+
 local fzflua = require("fzf-lua")
-vim.keymap.set('n', '<leader>pf', fzflua.git_files, {})
+vim.keymap.set('n', '<leader>pf', fzflua.files, {})
 vim.keymap.set('n', '<leader>pg', fzflua.live_grep, {})
 vim.keymap.set('n', '<leader>po', fzflua.lsp_document_symbols, {})
 vim.keymap.set('n', '<leader>pb', fzflua.buffers, {})
