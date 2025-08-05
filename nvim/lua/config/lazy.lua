@@ -53,7 +53,6 @@ require("lazy").setup({
     {
       "tiagovla/tokyodark.nvim",
       opts = {
-        -- custom options here
       },
       config = function(_, opts)
         require("tokyodark").setup(opts) -- calling setup is optional
@@ -94,7 +93,7 @@ require("lazy").setup({
           ['<C-Tab>'] = { 'snippet_forward', 'fallback' },
           ['<C-S-Tab>'] = { 'snippet_backward', 'fallback' },
 
-          ['<Esc>'] = { 'cancel', 'fallback' },
+          -- ['<Esc>'] = { 'cancel', 'fallback' },
           ['<CR>'] = { 'accept', 'fallback' },
           ['<C-space>'] = { 'show', 'fallback' },
         },

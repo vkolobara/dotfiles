@@ -1,90 +1,109 @@
 {
-    "layer": "top",
-    "position": "top",
-    "spacing": 0,
-    "height": 34,
-    "modules-left": [
-        "hyprland/workspaces"
-    ],
-    "modules-center": [
-        "clock"
-    ],
-    "modules-right": [
-        "tray",
-        "cpu",
-        "memory",
-        "wireplumber",
-        "battery",
-        "power-profiles-daemon",
-        "custom/power"
-    ],
-    "hyprland/workspaces": {
-        "on-click": "activate",
-        "format": "{icon}",
-        "format-icons": {
-            "default": "",
-            "1": "1",
-            "2": "2",
-            "3": "3",
-            "4": "4",
-            "5": "5",
-            "6": "6",
-            "7": "7",
-            "8": "8",
-            "9": "9",
-        },
-        "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": []
-        }
+  "output": "HDMI-A-1",
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+  "spacing": 0,
+  "modules-left": [
+    "hyprland/workspaces",
+    "tray",
+    "custom/lock",
+    "custom/reboot",
+    "custom/power"
+  ],
+  "modules-center": [
+    "hyprland/window"
+  ],
+  "modules-right": [
+    "cpu",
+    "memory",
+    "wireplumber",
+    "battery",
+    "power-profiles-daemon",
+    "clock"
+  ],
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "all-outputs": true,
+    "format": "{icon}",
+    "format-icons": {
+      "default": "",
+      "1": "󰣇",
+      "2": "󰈹",
+      "3": "󰭹",
+      "4": "",
+      "5": "",
+      "6": "󰕒"
     },
-    "cpu": {
-        "interval": 5,
-        "format": "󰘚 {}%",
-        "max-length": 10
-    },
-    "memory": {
-        "interval": 5,
-        "format": "󰍛 {}%",
-        "max-length": 10
-    },
-    "tray": {
-        "spacing": 10
-    },
-    "clock": {
-        "interval": 1,
-        "tooltip-format": "{calendar}",
-        "format-alt": "  {:%a, %d %b %Y}",
-        "format": "  {:%H:%M:%S}"
-    },
-    "power-profiles-daemon": {
-        "format": "{icon} {profile}",
-        "format-icons": {
-            "performance": "",
-            "balanced": "",
-            "power-saver": ""
-        },
-        "on-click": "power-profiles-daemon-ctl set-profile"
-    },
-    "wireplumber": {
-        "format": "{icon} {volume}%",
-        "format-bluetooth": "󰂰",
-        "nospacing": 1,
-        "tooltip-format": "Volume : {volume}%",
-        "format-muted": "󰝟",
-        "format-icons": {
-            "headphone": "",
-            "default": ["󰖀","󰕾",""]
-        },
-        "on-click": "pavucontrol",
-        "scroll-step": 1
-    },
-    "custom/power": {
-        "format": "󰤆",
-        "tooltip": false,
-        "on-click": "wlogout &"
+    "persistent-workspaces": {
+      "*": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
     }
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "󰘚 {}%",
+    "max-length": 10
+  },
+  "memory": {
+    "interval": 5,
+    // "format": " {}%",
+    "format": "󰍛 {used:0.1f}G/{total:0.1f}G",
+    "max-length": 32
+  },
+  "tray": {
+    "icon-size": 24,
+    "spacing": 10
+  },
+  "clock": {
+    "interval": 1,
+    "tooltip-format": "{calendar}",
+    "format-alt": "{:%a, %d %b %Y}",
+    "format": "{:%H:%M:%S}"
+  },
+  "power-profiles-daemon": {
+    "format": "{icon} {profile}",
+    "format-icons": {
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    },
+    "on-click": "power-profiles-daemon-ctl set-profile"
+  },
+  "wireplumber": {
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "󰂰",
+    "nospacing": 1,
+    "tooltip-format": "Volume : {volume}%",
+    "format-muted": "󰝟",
+    "format-icons": {
+      "headphone": "",
+      "default": [
+        "󰖀",
+        "󰕾",
+        ""
+      ]
+    },
+    "on-click": "pavucontrol",
+    "scroll-step": 1
+  },
+  "custom/lock": {
+    "format": "<span color='#00FFFF'>  </span>",
+    "on-click": "hyprlock"
+  },
+  "custom/reboot": {
+    "format": "<span color='#FFD700'>  </span>",
+    "on-click": "systemctl reboot"
+  },
+  "custom/power": {
+    "format": "<span color='#FF4040'>  </span>",
+    "on-click": "systemctl poweroff"
+  }
 }
