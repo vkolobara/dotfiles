@@ -78,28 +78,55 @@ require("lazy").setup({
       end
     },
     {
+      'saghen/blink.cmp',
+      dependencies = { 'rafamadriz/friendly-snippets' },
+
+      version = '1.*',
+
+      ---@module 'blink.cmp'
+      ---@type blink.cmp.Config
+      opts = {
+        keymap = {
+          preset = 'default',
+
+          ['<Tab>'] = { 'select_next', 'fallback' },
+          ['<S-Tab>'] = { 'select_prev', 'fallback' },
+          ['<Esc>'] = { 'cancel', 'fallback' },
+          ['<CR>'] = { 'accept', 'fallback' },
+          ['<C-space>'] = { 'show', 'fallback' },
+        },
+
+        appearance = {
+          nerd_font_variant = 'mono'
+        },
+
+        completion = {
+          documentation = { auto_show =  true},
+          ghost_text = { enabled = true },
+        },
+
+        sources = {
+          default = { 'lsp', 'path', 'snippets', 'buffer' },
+        },
+        fuzzy = { implementation = "prefer_rust" }
+      },
+      opts_extend = { "sources.default" }
+    },
+    {
       "mason-org/mason-lspconfig.nvim",
       opts = {},
       dependencies = {
 
-        { "mason-org/mason.nvim",  opts = {} },
+        { "mason-org/mason.nvim", opts = {} },
         "neovim/nvim-lspconfig",
 
-        { "ms-jpq/coq_nvim",       branch = "coq" },
-        { "ms-jpq/coq.artifacts",  branch = "artifacts" },
-        { 'ms-jpq/coq.thirdparty', branch = "3p" },
       },
       init = function()
-        vim.g.coq_settings = {
-          auto_start = 'shut-up',
-          keymap = {
-            bigger_preview = '<C-tab>'
-          }
-        }
-
         require("mason").setup()
         require('mason-lspconfig').setup()
       end,
+      config = function()
+      end
     },
     {
       'stevearc/conform.nvim',
@@ -157,6 +184,9 @@ require("lazy").setup({
       'windwp/nvim-autopairs',
       event = "InsertEnter",
       opts = {}
+    },
+    {
+      "github/copilot.vim"
     }
   },
   -- Configure any other settings here. See the documentation for more details.

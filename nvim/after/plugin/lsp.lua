@@ -16,13 +16,24 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
-local coq = require "coq"
+local blink = require("blink.cmp")
 local lsp = require "lspconfig"
 
 require('mason-lspconfig').setup({
   handlers = {
     function(server_name)
-      lsp[server_name].setup(coq.lsp_ensure_capabilities())
+      local capabilities = blink.get_lsp_capabilities()
+      lsp[server_name].setup(capabilities)
      end,
   }
 })
+
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_enabled = false
+
+vim.keymap.set('i', '<C-l>', '<Plug>(copilot-suggest)')
+vim.keymap.set('i', '<C-j>', 'copilot#Accept("\\<CR>")', {
+    expr = true,
+    replace_keycodes = false,
+})
+
