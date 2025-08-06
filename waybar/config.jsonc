@@ -15,6 +15,7 @@
     "hyprland/window"
   ],
   "modules-right": [
+    "mpris",
     "cpu",
     "memory",
     "wireplumber",
@@ -22,6 +23,9 @@
     "power-profiles-daemon",
     "clock"
   ],
+  "hyprland/window": {
+    "max-length": 32
+  },
   "hyprland/workspaces": {
     "on-click": "activate",
     "all-outputs": true,
@@ -105,5 +109,15 @@
   "custom/power": {
     "format": "<span color='#FF4040'>  </span>",
     "on-click": "systemctl poweroff"
+  },
+  "mpris": {
+    "format": "{player_icon} {title} - {artist} {position}/{length}",
+    "title-len": 24,
+    "player-icons": {
+      "spotify": "",
+      "firefox": ""
+    },
+    "interval": 1,
   }
+
 }

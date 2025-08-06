@@ -27,7 +27,7 @@
   min-width: 128px;
 }
 
-#cpu,
+#mpris,
 #custom-lock {
   background-color: rgba(15, 27, 53, 0.8);
   margin-top: 6px;
@@ -37,6 +37,7 @@
   border-width: 0px;
 }
 
+#cpu,
 #memory,
 #power-profiles-daemon,
 #battery,
