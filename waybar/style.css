@@ -3,7 +3,7 @@
   font-family: JetBrainsMono Nerd Font;
   font-weight: bold;
   font-size: 24px;
-  color: #dcdfe1;
+  color: #d3c6aa;
   margin-left: 0px;
   margin-right: 0px;
 }
@@ -17,7 +17,8 @@
 #workspaces,
 #window,
 #tray {
-  background-color: rgba(15, 27, 53, 0.8);
+  /* background-color: rgba(15, 27, 53, 0.8); */
+  background-color: rgba(46, 56, 60, 0.8);
   padding: 4px 16px;
   margin-top: 6px;
   margin-left: 6px;
@@ -29,7 +30,7 @@
 
 #mpris,
 #custom-lock {
-  background-color: rgba(15, 27, 53, 0.8);
+  background-color: rgba(46, 56, 60, 0.8);
   margin-top: 6px;
   margin-left: 6px;
   padding: 4px 16px;
@@ -44,14 +45,14 @@
 #wireplumber,
 #network,
 #custom-reboot {
-  background-color: rgba(15, 27, 53, 0.8);
+  background-color: rgba(46, 56, 60, 0.8);
   margin-top: 6px;
   padding: 4px 16px;
 }
 
 #clock,
 #custom-power {
-  background-color: rgba(15, 27, 53, 0.8);
+  background-color: rgba(46, 56, 60, 0.8);
   margin-top: 6px;
   margin-right: 16px;
   padding: 4px 16px;
@@ -59,16 +60,8 @@
   border-width: 0px;
 }
 
-#workspaces button:hover {
-  background-color: rgba(97, 175, 239, 0.2);
-  padding: 2px 8px;
-  margin: 0 2px;
-  border-radius: 10px;
-}
-
 #workspaces button.active {
-  background-color: #61afef;
-  color: #ffffff;
+  background-color: #4f5b58;
   padding: 2px 8px;
   margin: 0 2px;
   border-radius: 10px;
@@ -77,9 +70,8 @@
 #workspaces button {
   background: transparent;
   border: none;
-  color: #888888;
   padding: 2px 8px;
-  margin: 0 2px;
+  margin: 0px 2px;
   border-radius: 10px;
   font-weight: bold;
 }
