@@ -47,16 +47,20 @@ vim.opt.signcolumn = "yes"
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-    -- import your plugins
-    --
-    -- colorscheme
     {
-      "tiagovla/tokyodark.nvim",
+      "sainnhe/everforest",
       opts = {
       },
       config = function(_, opts)
-        require("tokyodark").setup(opts) -- calling setup is optional
-        vim.cmd("colorscheme tokyodark")
+        vim.cmd([[
+          if has('termguicolors')
+            set termguicolors
+          endif
+          set background=dark
+          let g:everforest_background='hard'
+          let g:everforest_better_performance = 1
+          colorscheme everforest
+        ]])
       end,
     },
     {
