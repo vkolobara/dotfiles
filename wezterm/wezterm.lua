@@ -8,6 +8,7 @@ config.enable_wayland = false
 config.adjust_window_size_when_changing_font_size = false
 
 config.font = wezterm.font("FiraCode Nerd Font")
+config.font_size = 16
 config.hide_tab_bar_if_only_one_tab = true
 config.color_scheme_dirs = {"~/.config/wezterm/colors"}
 config.color_scheme = 'Everforest Dark (Hard)'
@@ -23,7 +24,7 @@ config.window_padding = {
 }
 
 local act = wezterm.action
-wezterm.on('update-right-status', function(window, pane)
+wezterm.on('update-right-status', function(window, _)
     window:set_right_status(window:active_workspace())
 end)
 
