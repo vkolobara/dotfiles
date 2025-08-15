@@ -44,13 +44,14 @@
 #battery,
 #wireplumber,
 #network,
+#clock,
 #custom-reboot {
   background-color: rgba(46, 56, 60, 0.8);
   margin-top: 6px;
   padding: 4px 16px;
 }
 
-#clock,
+#custom-notification,
 #custom-power {
   background-color: rgba(46, 56, 60, 0.8);
   margin-top: 6px;
