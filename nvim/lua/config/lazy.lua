@@ -43,6 +43,7 @@ vim.opt.breakindent = true
 vim.opt.updatetime = 250
 
 vim.opt.signcolumn = "yes"
+vim.opt.conceallevel = 1
 
 -- Setup lazy.nvim
 require("lazy").setup({
@@ -214,12 +215,67 @@ require("lazy").setup({
           },
         })
       end
+    },
+    {
+      "epwalsh/obsidian.nvim",
+      version = "*", -- recommended, use latest release instead of latest commit
+      lazy = false,
+      ft = "markdown",
+      keys = {
+        { "<leader>ow",  mode = "n", "<cmd>ObsidianWorkspace<cr>",   desc = "Obsidian Worskpace" },
+        { "<leader>of",  mode = "n", "<cmd>ObsidianQuickSwitch<cr>", desc = "Obsidian Find Note" },
+
+        { "<leader>on",  mode = "n", "<cmd>ObsidianNew<cr>",         desc = "Obsidian New Note" },
+        { "<leader>oN",  mode = "v", ":ObsidianExtractNote<cr>",     desc = "Obsidian New Note From Selection" },
+
+        { "<leader>oL",  mode = "n", "<cmd>ObsidianBacklinks<cr>",   desc = "Obsidian Back Links" },
+        { "<leader>ot",  mode = "n", "<cmd>ObsidianTags<cr>",        desc = "Obsidian Tags" },
+
+        { "<leader>od",  mode = "n", "<cmd>ObsidianToday<cr>",       desc = "Obsidian Daily" },
+        { "<leader>ot",  mode = "n", "<cmd>ObsidianTomorrow<cr>",    desc = "Obsidian Tomorrow" },
+        { "<leader>ogd", mode = "n", "<cmd>ObsidianDailies<cr>",     desc = "Obsidian Daily List" },
+
+        { "<leader>ol",  mode = "v", "<cmd>ObsidianLink<cr>",        desc = "Obsidian Link" },
+        { "<leader>ogl", mode = "n", "<cmd>ObsidianFollowLink<cr>",  desc = "Obsidian Link List" },
+
+        { "<leader>orn", mode = "n", ":ObsidianRename<cr>",          desc = "Obsidian Rename" },
+      },
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+      },
+      opts = {
+        follow_url_func = function(url)
+          if vim.loop.os_uname().sysname == "Linux" then
+            vim.fn.jobstart({ "xdg-open", url })
+          elseif vim.loop.os_uname().sysname == "Darwin" then
+            vim.fn.jobstart({ "open", url })
+          else
+            error("unsupported os")
+          end
+        end,
+        pickers = {
+          name = "fzf-lua"
+        },
+        workspaces = {
+          {
+            name = "personal",
+            path = "~/vaults/personal",
+          },
+          {
+            name = "work",
+            path = "~/vaults/work",
+          },
+        },
+      },
+      config = function(_, opts)
+        require('obsidian').setup(opts)
+      end
     }
 
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "tokyodark" } },
+  install = { colorscheme = { "everforest" } },
   -- automatically check for plugin updates
   checker = { enabled = false },
 })
