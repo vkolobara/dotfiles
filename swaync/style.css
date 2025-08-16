@@ -1,12 +1,12 @@
 :root {
   /* --cc-bg: rgba(46, 46, 46, 0.7); */
-  --cc-bg: rgba(46, 56, 60, 0.8);
+  --cc-bg: rgba(46, 56, 60, 0.9);
   --noti-border-color: rgba(255, 255, 255, 0.15);
   --noti-bg: 46, 56, 60;
-  --noti-bg-alpha: 0.8;
+  --noti-bg-alpha: 0.9;
   --noti-bg-darker: rgba(46, 56, 60, 1);
   --noti-bg-hover: rgba(46, 56, 60, 1);
-  --noti-bg-focus: rgb(56, 56, 56);
+  --noti-bg-focus: rgb(46, 56, 56, 1);
   --noti-close-bg: rgb(78, 78, 78);
   --noti-close-bg-hover: rgb(94, 94, 94);
   --text-color: #d3c6aa;
