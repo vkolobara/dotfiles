@@ -239,6 +239,7 @@ require("lazy").setup({
         { "<leader>oL",  mode = "n", "<cmd>ObsidianBacklinks<cr>",   desc = "Obsidian Back Links" },
         { "<leader>ot",  mode = "n", "<cmd>ObsidianTags<cr>",        desc = "Obsidian Tags" },
 
+        { "<leader>oy",  mode = "n", "<cmd>ObsidianYesterday<cr>",   desc = "Obsidian Yesterday" },
         { "<leader>od",  mode = "n", "<cmd>ObsidianToday<cr>",       desc = "Obsidian Daily" },
         { "<leader>ot",  mode = "n", "<cmd>ObsidianTomorrow<cr>",    desc = "Obsidian Tomorrow" },
         { "<leader>ogd", mode = "n", "<cmd>ObsidianDailies<cr>",     desc = "Obsidian Daily List" },
@@ -266,12 +267,8 @@ require("lazy").setup({
         },
         workspaces = {
           {
-            name = "personal",
-            path = "~/vaults/personal",
-          },
-          {
-            name = "work",
-            path = "~/vaults/work",
+            name = "vinko",
+            path = "~/vaults/vinko",
           },
         },
       },
