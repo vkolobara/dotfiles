@@ -281,9 +281,6 @@ require("lazy").setup({
       dependencies = {
         "kevinhwang91/promise-async"
       },
-      config = function()
-        require('ufo').setup()
-      end
     }
 
   },
