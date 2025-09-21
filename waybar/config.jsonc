@@ -1,5 +1,5 @@
 {
-  "output": "HDMI-A-1",
+  "output": "DP-8",
   "layer": "top",
   "position": "top",
   "height": 32,
@@ -26,6 +26,16 @@
   ],
   "hyprland/window": {
     "max-length": 32
+  },
+  "battery": {
+    "interval": 60,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{capacity}% [{time}]",
+    "max-length": 25
+
   },
   "custom/notification": {
     "tooltip": false,

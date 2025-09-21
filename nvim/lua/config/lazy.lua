@@ -296,6 +296,14 @@ require("lazy").setup({
         kulala_keymaps_prefix = "",
       },
     },
+    {
+        'nvim-flutter/flutter-tools.nvim',
+        lazy = false,
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+        },
+        config = true,
+    }
 
   },
   -- Configure any other settings here. See the documentation for more details.
