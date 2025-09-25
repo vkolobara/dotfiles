@@ -12,7 +12,8 @@
     "custom/power"
   ],
   "modules-center": [
-    "hyprland/window"
+    "hyprland/window",
+    "custom/weather"
   ],
   "modules-right": [
     // "mpris",
@@ -149,6 +150,11 @@
       "firefox": ""
     },
     "interval": 1
+  },
+  "custom/weather": {
+    "format": "{text}",
+    "exec": "curl -q wttr.in?format=3",
+    "interval": 600
   }
 
 }
