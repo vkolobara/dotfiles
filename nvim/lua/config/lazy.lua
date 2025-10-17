@@ -49,7 +49,8 @@ vim.opt.conceallevel = 1
 require("lazy").setup({
   spec = {
     {
-      "sainnhe/everforest",
+      -- "sainnhe/everforest",
+      "p00f/alabaster.nvim",
       opts = {
       },
       config = function(_, opts)
@@ -58,9 +59,10 @@ require("lazy").setup({
             set termguicolors
           endif
           set background=dark
-          let g:everforest_background='hard'
-          let g:everforest_better_performance = 1
-          colorscheme everforest
+          " let g:everforest_background='hard'
+          " let g:everforest_better_performance = 1
+          " colorscheme everforest
+          colorscheme alabaster
         ]])
       end,
     },
