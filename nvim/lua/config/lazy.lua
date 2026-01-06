@@ -49,8 +49,65 @@ vim.opt.conceallevel = 1
 require("lazy").setup({
   spec = {
     {
-      -- "sainnhe/everforest",
-      "p00f/alabaster.nvim",
+      "olimorris/codecompanion.nvim",
+      version = "^18.0.0",
+      opts = {
+        interactions = {
+          chat = {
+            adapter = "gemini_cli"
+          },
+          completion = {
+            adapter = "gemini_cli"
+          },
+          inline= {
+            adapter = "gemini_cli"
+          }
+        },
+        adapters = {
+          acp = {
+            gemini_cli = function()
+              return require("codecompanion.adapters").extend("gemini_cli", {
+                defaults = {
+                  auth_method = "oauth-personal",
+                  oauth_credentials_path = vim.fs.abspath("~/.gemini/oauth_creds.json"),
+                  timeout = 60000, -- 20 seconds
+                },
+                handlers = {
+                  auth = function(self)
+                    ---@type string|nil
+                    local oauth_credentials_path = self.defaults.oauth_credentials_path
+                    return (oauth_credentials_path and vim.fn.filereadable(oauth_credentials_path)) == 1
+                  end,
+                },
+              })
+            end,
+          }
+        }
+      },
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-treesitter/nvim-treesitter",
+        {
+          "MeanderingProgrammer/render-markdown.nvim",
+          ft = { "markdown", "codecompanion" }
+        },
+        {
+          "HakonHarnes/img-clip.nvim",
+          opts = {
+            filetypes = {
+              codecompanion = {
+                prompt_for_file_name = false,
+                template = "[Image]($FILE_PATH)",
+                use_absolute_path = true,
+              },
+            },
+          },
+        },
+      },
+    },
+    {
+      "sainnhe/everforest",
+      -- "p00f/alabaster.nvim",
       opts = {
       },
       config = function(_, opts)
@@ -59,10 +116,10 @@ require("lazy").setup({
             set termguicolors
           endif
           set background=dark
-          " let g:everforest_background='hard'
-          " let g:everforest_better_performance = 1
-          " colorscheme everforest
-          colorscheme alabaster
+          let g:everforest_background='hard'
+          let g:everforest_better_performance = 1
+          colorscheme everforest
+          " colorscheme alabaster
         ]])
       end,
     },
@@ -118,6 +175,9 @@ require("lazy").setup({
 
         sources = {
           default = { 'lsp', 'path', 'snippets', 'buffer' },
+          per_filetype = {
+            codecompanion = { "codecompanion" },
+          }
         },
         fuzzy = { implementation = "prefer_rust" }
       },
@@ -299,12 +359,12 @@ require("lazy").setup({
       },
     },
     {
-        'nvim-flutter/flutter-tools.nvim',
-        lazy = false,
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-        },
-        config = true,
+      'nvim-flutter/flutter-tools.nvim',
+      lazy = false,
+      dependencies = {
+        'nvim-lua/plenary.nvim',
+      },
+      config = true,
     }
 
   },

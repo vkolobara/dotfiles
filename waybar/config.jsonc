@@ -1,5 +1,6 @@
 {
   "output": "DP-8",
+  // "output": "eDP-1",
   "layer": "top",
   "position": "top",
   "height": 32,
@@ -12,8 +13,8 @@
     "custom/power"
   ],
   "modules-center": [
-    "hyprland/window",
-    "custom/weather"
+    "hyprland/window"
+    // "custom/weather"
   ],
   "modules-right": [
     // "mpris",
