@@ -59,7 +59,7 @@ require("lazy").setup({
           completion = {
             adapter = "gemini_cli"
           },
-          inline= {
+          inline = {
             adapter = "gemini_cli"
           }
         },
@@ -71,6 +71,7 @@ require("lazy").setup({
                   auth_method = "oauth-personal",
                   oauth_credentials_path = vim.fs.abspath("~/.gemini/oauth_creds.json"),
                   timeout = 60000, -- 20 seconds
+                  model = "gemini-3-flash"
                 },
                 handlers = {
                   auth = function(self)
@@ -357,6 +358,22 @@ require("lazy").setup({
         global_keymaps_prefix = "<leader>R",
         kulala_keymaps_prefix = "",
       },
+    },
+    {
+      'kristijanhusak/vim-dadbod-ui',
+      dependencies = {
+        { 'tpope/vim-dadbod',                     lazy = true },
+        { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
+      },
+      cmd = {
+        'DBUI',
+        'DBUIToggle',
+        'DBUIAddConnection',
+        'DBUIFindBuffer',
+      },
+      init = function()
+        vim.g.db_ui_use_nerd_fonts = 1
+      end,
     },
     {
       'nvim-flutter/flutter-tools.nvim',
