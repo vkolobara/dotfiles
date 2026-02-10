@@ -50,61 +50,22 @@ require("lazy").setup({
   spec = {
     {
       "olimorris/codecompanion.nvim",
-      version = "^18.0.0",
+      version = "^19.0.0",
       opts = {
         interactions = {
           chat = {
-            adapter = "gemini_cli"
-          },
-          completion = {
-            adapter = "gemini_cli"
-          },
-          inline = {
-            adapter = "gemini_cli"
-          }
-        },
-        adapters = {
-          acp = {
-            gemini_cli = function()
-              return require("codecompanion.adapters").extend("gemini_cli", {
-                defaults = {
-                  auth_method = "oauth-personal",
-                  oauth_credentials_path = vim.fs.abspath("~/.gemini/oauth_creds.json"),
-                  timeout = 60000, -- 20 seconds
-                  model = "gemini-3-flash"
-                },
-                handlers = {
-                  auth = function(self)
-                    ---@type string|nil
-                    local oauth_credentials_path = self.defaults.oauth_credentials_path
-                    return (oauth_credentials_path and vim.fn.filereadable(oauth_credentials_path)) == 1
-                  end,
-                },
-              })
-            end,
+            name = "opencode",
+            model = "claude-sonnet-4.6",
           }
         }
       },
       dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-treesitter/nvim-treesitter",
-        {
-          "MeanderingProgrammer/render-markdown.nvim",
-          ft = { "markdown", "codecompanion" }
-        },
-        {
-          "HakonHarnes/img-clip.nvim",
-          opts = {
-            filetypes = {
-              codecompanion = {
-                prompt_for_file_name = false,
-                template = "[Image]($FILE_PATH)",
-                use_absolute_path = true,
-              },
-            },
-          },
-        },
       },
+    },
+    {
+      "sindrets/diffview.nvim"
     },
     {
       "sainnhe/everforest",
@@ -382,6 +343,16 @@ require("lazy").setup({
         'nvim-lua/plenary.nvim',
       },
       config = true,
+    },
+    {
+      "j-hui/fidget.nvim",
+      opts = {
+        -- options
+      },
+    },
+    {
+      dir = "~/personal/perun.nvim",
+      opts = {}
     }
 
   },

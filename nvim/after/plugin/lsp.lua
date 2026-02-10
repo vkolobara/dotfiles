@@ -45,6 +45,19 @@ vim.keymap.set('i', '<C-j>', 'copilot#Accept("\\<CR>")', {
   replace_keycodes = false,
 })
 
+vim.lsp.config("lua_ls", {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" }
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true)
+      }
+    }
+  }
+})
+
 vim.lsp.config("roslyn", {
   on_attach = function(client)
     client.server_capabilities.semanticTokensProvider = nil
@@ -66,4 +79,3 @@ vim.lsp.config("expert", {
   root_markers = { 'mix.exs', '.git' },
   filetypes = { 'elixir', 'eelixir', 'heex' }
 })
-
