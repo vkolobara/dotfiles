@@ -49,22 +49,6 @@ vim.opt.conceallevel = 1
 require("lazy").setup({
   spec = {
     {
-      "olimorris/codecompanion.nvim",
-      version = "^19.0.0",
-      opts = {
-        interactions = {
-          chat = {
-            name = "opencode",
-            model = "claude-sonnet-4.6",
-          }
-        }
-      },
-      dependencies = {
-        "nvim-lua/plenary.nvim",
-        "nvim-treesitter/nvim-treesitter",
-      },
-    },
-    {
       "sindrets/diffview.nvim"
     },
     {
