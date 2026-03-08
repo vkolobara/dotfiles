@@ -52,6 +52,9 @@ require("lazy").setup({
       "sindrets/diffview.nvim"
     },
     {
+      "mfussenegger/nvim-dap"
+    },
+    {
       "sainnhe/everforest",
       -- "p00f/alabaster.nvim",
       opts = {
@@ -71,7 +74,10 @@ require("lazy").setup({
     },
     {
       "ibhagwan/fzf-lua",
-      opts = {}
+      opts = {},
+      config = function(_, opts)
+        require("fzf-lua").register_ui_select()
+      end
     },
     {
       'nvim-treesitter/nvim-treesitter',
@@ -117,6 +123,7 @@ require("lazy").setup({
           documentation = { auto_show = true },
           ghost_text = { enabled = true },
           accept = { auto_brackets = { enabled = false }, },
+          menu = { auto_show =  true}
         },
 
         sources = {
@@ -144,6 +151,9 @@ require("lazy").setup({
       end,
       config = function()
       end
+    },
+    {
+      "jay-babu/mason-nvim-dap.nvim"
     },
     {
       "seblyng/roslyn.nvim",
