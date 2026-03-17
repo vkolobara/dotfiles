@@ -123,7 +123,7 @@ require("lazy").setup({
           documentation = { auto_show = true },
           ghost_text = { enabled = true },
           accept = { auto_brackets = { enabled = false }, },
-          menu = { auto_show =  true}
+          menu = { auto_show = true }
         },
 
         sources = {
@@ -343,6 +343,10 @@ require("lazy").setup({
       opts = {
         -- options
       },
+    },
+    {
+      "willothy/wezterm.nvim",
+      config = true
     },
     {
       dir = "~/personal/perun.nvim",
