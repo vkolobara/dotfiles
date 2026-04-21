@@ -55,8 +55,8 @@ require("lazy").setup({
       "mfussenegger/nvim-dap"
     },
     {
-      "sainnhe/everforest",
-      -- "p00f/alabaster.nvim",
+      -- "sainnhe/everforest",
+      dir = "~/personal/alabaster.nvim",
       opts = {
       },
       config = function(_, opts)
@@ -64,11 +64,11 @@ require("lazy").setup({
           if has('termguicolors')
             set termguicolors
           endif
-          set background=dark
-          let g:everforest_background='hard'
-          let g:everforest_better_performance = 1
-          colorscheme everforest
-          " colorscheme alabaster
+          " set background=dark
+          " let g:everforest_background='hard'
+          " let g:everforest_better_performance = 1
+          " colorscheme everforest
+          colorscheme alabaster
         ]])
       end,
     },
@@ -82,7 +82,7 @@ require("lazy").setup({
     {
       'nvim-treesitter/nvim-treesitter',
       lazy = false,
-      branch = 'master',
+      branch = "main",
       build = ':TSUpdate'
     },
     {
@@ -156,14 +156,6 @@ require("lazy").setup({
       "jay-babu/mason-nvim-dap.nvim"
     },
     {
-      "seblyng/roslyn.nvim",
-      ---@module 'roslyn.config'
-      ---@type RoslynNvimConfig
-      opts = {
-        -- your configuration comes here; leave empty for default settings
-      },
-    },
-    {
       'stevearc/conform.nvim',
       opts = {},
       config = function()
@@ -221,9 +213,6 @@ require("lazy").setup({
       opts = {}
     },
     {
-      "github/copilot.vim"
-    },
-    {
       'numToStr/Comment.nvim',
       config = function()
         require('Comment').setup({
@@ -240,58 +229,6 @@ require("lazy").setup({
             extra = false,
           },
         })
-      end
-    },
-    {
-      "epwalsh/obsidian.nvim",
-      version = "*", -- recommended, use latest release instead of latest commit
-      lazy = false,
-      ft = "markdown",
-      keys = {
-        { "<leader>ow",  mode = "n", "<cmd>ObsidianWorkspace<cr>",   desc = "Obsidian Worskpace" },
-        { "<leader>of",  mode = "n", "<cmd>ObsidianQuickSwitch<cr>", desc = "Obsidian Find Note" },
-
-        { "<leader>on",  mode = "n", "<cmd>ObsidianNew<cr>",         desc = "Obsidian New Note" },
-        { "<leader>oN",  mode = "v", ":ObsidianExtractNote<cr>",     desc = "Obsidian New Note From Selection" },
-
-        { "<leader>oL",  mode = "n", "<cmd>ObsidianBacklinks<cr>",   desc = "Obsidian Back Links" },
-        { "<leader>ot",  mode = "n", "<cmd>ObsidianTags<cr>",        desc = "Obsidian Tags" },
-
-        { "<leader>oy",  mode = "n", "<cmd>ObsidianYesterday<cr>",   desc = "Obsidian Yesterday" },
-        { "<leader>od",  mode = "n", "<cmd>ObsidianToday<cr>",       desc = "Obsidian Daily" },
-        { "<leader>ot",  mode = "n", "<cmd>ObsidianTomorrow<cr>",    desc = "Obsidian Tomorrow" },
-        { "<leader>ogd", mode = "n", "<cmd>ObsidianDailies<cr>",     desc = "Obsidian Daily List" },
-
-        { "<leader>ol",  mode = "v", "<cmd>ObsidianLink<cr>",        desc = "Obsidian Link" },
-        { "<leader>ogl", mode = "n", "<cmd>ObsidianFollowLink<cr>",  desc = "Obsidian Link List" },
-
-        { "<leader>orn", mode = "n", ":ObsidianRename<cr>",          desc = "Obsidian Rename" },
-      },
-      dependencies = {
-        "nvim-lua/plenary.nvim",
-      },
-      opts = {
-        follow_url_func = function(url)
-          if vim.loop.os_uname().sysname == "Linux" then
-            vim.fn.jobstart({ "xdg-open", url })
-          elseif vim.loop.os_uname().sysname == "Darwin" then
-            vim.fn.jobstart({ "open", url })
-          else
-            error("unsupported os")
-          end
-        end,
-        pickers = {
-          name = "fzf-lua"
-        },
-        workspaces = {
-          {
-            name = "vinko",
-            path = "~/vaults/vinko",
-          },
-        },
-      },
-      config = function(_, opts)
-        require('obsidian').setup(opts)
       end
     },
     {
