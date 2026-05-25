@@ -14,7 +14,8 @@ config.font_size = 16
 config.hide_tab_bar_if_only_one_tab = true
 config.color_scheme_dirs = {"~/.config/wezterm/colors"}
 -- config.color_scheme = 'Everforest Dark (Hard)'
-config.color_scheme = 'Alabaster Dark'
+-- config.color_scheme = 'Alabaster Dark'
+config.color_scheme = 'kanagawabones'
 
 config.use_fancy_tab_bar = true
 config.tab_max_width = 32

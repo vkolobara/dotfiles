@@ -7,10 +7,6 @@ output "DP-1" {
     position x=0 y=0
     layout {
         default-column-width { proportion 1.0; }
-        preset-column-widths {
-            proportion 1.0
-        }
-        always-center-single-column
     }
 }
 
