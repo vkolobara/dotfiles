@@ -1,0 +1,18 @@
+vim.pack.add({  "https://github.com/ibhagwan/fzf-lua" })
+
+local fzflua = require("fzf-lua")
+fzflua.register_ui_select()
+
+vim.keymap.set('n', '<leader>pf', fzflua.files, {})
+vim.keymap.set('n', '<leader>pg', fzflua.live_grep, {})
+vim.keymap.set('n', '<leader>po', fzflua.lsp_document_symbols, {})
+vim.keymap.set('n', '<leader>pb', fzflua.buffers, {})
+vim.keymap.set('n', '<leader>ca', fzflua.lsp_code_actions, {})
+vim.keymap.set('n', '<leader>rr', fzflua.lsp_references, {})
+vim.keymap.set("n", "<leader>ws", fzflua.lsp_live_workspace_symbols, {})
+vim.keymap.set('n', 'gD', fzflua.lsp_declarations, {})
+vim.keymap.set("n", "gd", fzflua.lsp_definitions, {})
+vim.keymap.set("n", "gi", fzflua.lsp_implementations, {})
+
+vim.keymap.set("n", "<leader>d", fzflua.diagnostics_document, {})
+vim.keymap.set("n", "<leader>D", fzflua.diagnostics_workspace, {})
