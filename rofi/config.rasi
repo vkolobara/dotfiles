@@ -1,102 +1,101 @@
 @theme "/dev/null"
 
 configuration {
-
-
-  timeout {
-      action: "kb-cancel";
-      delay:  0;
-  }
-  filebrowser {
-      directories-first: true;
-      sorting-method:    "name";
-  }
+    timeout {
+        action: "kb-cancel";
+        delay:  0;
+    }
+    filebrowser {
+        directories-first: true;
+        sorting-method:    "name";
+    }
 }
 
 * {
-    font: "JetBrainsMono Nerd Font Medium 24";
+    font: "JetBrainsMono Nerd Font Medium 16";
 
-    bgdark:     rgba(46,56,60,0.8);
-    bgalt:     rgba(46,56,60,0.8);
-    bggreen:     #d3c6aa;
-    fg0:     #d3c6aa;
+    bgdark:           rgba(15, 13, 14, 0.92);
+    bgalt:            #141112;
+    border-accent:    #f57385;
+    fg0:              #fceef0;
 
-    accent-color:     #4f5b58;
-    urgent-color:     #DBBC7F;
+    accent-color:     #3a1620;
+    urgent-color:     #ff4e66;
 
-    background-color:   transparent;
-    text-color:         @fg0;
+    background-color: transparent;
+    text-color:       @fg0;
 
-    transparent: rgba(0,0,0,0);
+    transparent:      rgba(0,0,0,0);
 }
 
 window {
     location:   center;
-    anchor: center;
+    anchor:     center;
     transparency: "screenshot";
-    padding: 10px;
-    border: 0px;
+    padding:    10px;
+    border:     0px;
     border-radius: 3px;
 
     background-color:   @transparent;
-    spacing: 0;
-    children: [mainbox];
+    spacing:    0;
+    children:   [mainbox];
     orientation: horizontal;
 }
 
 mainbox {
-    spacing: 0;
-    children: [ inputbar, message, listview ];
+    spacing:    0;
+    children:   [ inputbar, message, listview ];
 }
 
 message {
-    color: @bggreen;
-    padding: 5px;
-    border-color: @fg0;
-    border: 0px 2px 2px 2px;
+    color:            @border-accent;
+    padding:          5px;
+    border-color:     @fg0;
+    border:           0px 2px 2px 2px;
     background-color: @bgdark;
 }
 
 inputbar {
-    color: @fg0;
-    padding:    11px;
-    background-color:   @bgalt;
+    color:            @fg0;
+    padding:          11px;
+    background-color: @bgalt;
 
-    border: 1px;
-    border-radius: 3px 3px 0px 0px;
-    border-color: @bggreen;
+    border:           1px;
+    border-radius:    3px 3px 0px 0px;
+    border-color:     @border-accent;
 }
 
 entry, prompt, case-indicator {
-    text-font: inherit;
-    text-color:inherit;
+    text-font:  inherit;
+    text-color: inherit;
 }
 
 prompt {
-    margin: 0px 1em 0em 0em ;
+    margin:     0px 1em 0em 0em;
+    text-color: #ff4e66;
 }
 
 listview {
-    padding: 8px;
-    border-radius: 0px 0px 3px 3px;
-    border-color: @bggreen;
-    border: 0px 1px 1px 1px;
-    background-color: rgba(46,52,64,0.9);
-    dynamic: false;
+    padding:          8px;
+    border-radius:    0px 0px 3px 3px;
+    border-color:     @border-accent;
+    border:           0px 1px 1px 1px;
+    background-color: rgba(20, 17, 18, 0.95);
+    dynamic:          false;
 }
 
 element {
-    padding: 3px;
-    vertical-align: 0.5;
-    border-radius: 3px;
+    padding:          3px;
+    vertical-align:   0.5;
+    border-radius:    3px;
     background-color: transparent;
-    color: @fg0;
-    text-color: rgb(216, 222, 233);
+    color:            @fg0;
+    text-color:       @fg0;
 }
 
 element selected.normal {
-	background-color: @accent-color;
-	text-color: @fg0;
+    background-color: @accent-color;
+    text-color:       #ff4e66;
 }
 
 element-text, element-icon {
@@ -105,16 +104,16 @@ element-text, element-icon {
 }
 
 button {
-    padding: 6px;
-    color: @fg0;
+    padding:          6px;
+    color:            @fg0;
     horizontal-align: 0.5;
 
-    border: 2px 0px 2px 2px;
-    border-radius: 4px 0px 0px 4px;
-    border-color: @bggreen;
+    border:           2px 0px 2px 2px;
+    border-radius:    4px 0px 0px 4px;
+    border-color:     @border-accent;
 }
 
 button selected normal {
-    border: 2px 0px 2px 2px;
-    border-color: @fg0;
+    border:           2px 0px 2px 2px;
+    border-color:     @fg0;
 }
