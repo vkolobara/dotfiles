@@ -19,7 +19,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(event)
     local opts = { buffer = event.buf }
     vim.lsp.codelens.enable(true, { bufnr = opts.buffer })
-    vim.lsp.inlay_hint.enable(true, { bufnr = opts.buffer })
+    vim.lsp.inlay_hint.enable(false, { bufnr = opts.buffer })
 
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)

@@ -24,3 +24,14 @@ require("config.packages.conform")
 require("config.packages.ufo")
 require("config.packages.dadbod")
 require("config.packages.dap")
+require("config.packages.orgmode")
+require("config.packages.neogit")
+
+-- Suppress specific annoying gopls inlay hint notifications
+local notify = vim.notify
+vim.notify = function(msg, log_level, opts)
+  if msg:match("getting file for InlayHint: no package metadata") then
+    return
+  end
+  notify(msg, log_level, opts)
+end
