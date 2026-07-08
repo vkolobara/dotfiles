@@ -54,6 +54,7 @@ vim.o.autocomplete = true
 vim.cmd [[
 	inoremap <silent><expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 	inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+	inoremap <silent><expr> <CR>   pumvisible() ? "\<C-y>" : "\<CR>"
 ]]
 vim.o.pumheight = 8
 
@@ -67,5 +68,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 vim.opt.complete:append('o')
-vim.opt.completeopt = { 'menuone', 'noselect' }
+vim.opt.completeopt = { 'menuone', 'noselect', 'popup' }
 vim.g.omni_sql_default_compl_type = 'syntax'
