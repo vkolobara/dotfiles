@@ -14,6 +14,22 @@ require('mason').setup({
 })
 require("mason-lspconfig").setup()
 
+vim.api.nvim_create_autocmd("VimEnter", {
+  desc = "Check Mason LSPs and update",
+  callback = function()
+    vim.schedule(function()
+      local registry = require("mason-registry")
+      registry.refresh(function()
+        local packages = registry.get_installed_packages()
+        for _, pkg in ipairs(packages) do
+          pkg:install(pkg)
+        end
+      end
+      )
+    end)
+  end
+})
+
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'Enable LSP actions',
   callback = function(event)
@@ -25,8 +41,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
     vim.keymap.set("i", "<C-k>", function() vim.lsp.buf.signature_help() end, opts)
     vim.keymap.set("n", "<leader>e", function() vim.diagnostic.open_float() end, opts)
-    vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-    vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+    vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = 1, float = true }) end, opts)
+    vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = -1, float = true }) end, opts)
     vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
   end,
 })

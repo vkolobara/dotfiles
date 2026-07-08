@@ -26,6 +26,16 @@ vim.api.nvim_create_autocmd('PackChanged', {
   end
 })
 
+vim.api.nvim_create_autocmd("VimEnter", {
+  desc = "Check Treesitter and update",
+  callback = function()
+    vim.schedule(function()
+      vim.cmd("TSUpdate")
+    end)
+  end
+
+})
+
 require("nvim-treesitter").setup()
 require("treesitter-context").setup({
 
