@@ -13,9 +13,6 @@ config.font = wezterm.font_with_fallback({"SauceCodePro Nerd Font", "Noto Color 
 config.font_size = 16
 config.hide_tab_bar_if_only_one_tab = true
 config.color_scheme_dirs = {"~/.config/wezterm/colors"}
--- config.color_scheme = 'Everforest Dark (Hard)'
--- config.color_scheme = 'Alabaster Dark'
-config.color_scheme = 'kanagawabones'
 config.color_scheme = 'moonfly'
 
 config.use_fancy_tab_bar = true
