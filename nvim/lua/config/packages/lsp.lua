@@ -14,21 +14,21 @@ require('mason').setup({
 })
 require("mason-lspconfig").setup()
 
-vim.api.nvim_create_autocmd("VimEnter", {
-  desc = "Check Mason LSPs and update",
-  callback = function()
-    vim.schedule(function()
-      local registry = require("mason-registry")
-      registry.refresh(function()
-        local packages = registry.get_installed_packages()
-        for _, pkg in ipairs(packages) do
-          pkg:install(pkg)
-        end
-      end
-      )
-    end)
-  end
-})
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--   desc = "Check Mason LSPs and update",
+--   callback = function()
+--     vim.schedule(function()
+--       local registry = require("mason-registry")
+--       registry.refresh(function()
+--         local packages = registry.get_installed_packages()
+--         for _, pkg in ipairs(packages) do
+--           pkg:install(pkg)
+--         end
+--       end
+--       )
+--     end)
+--   end
+-- })
 
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'Enable LSP actions',
