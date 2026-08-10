@@ -84,5 +84,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 vim.opt.complete:append('o')
-vim.opt.completeopt = { 'menuone', 'noselect', 'popup' }
+vim.opt.completeopt = { 'menuone', 'noselect', 'popup', 'fuzzy' }
 vim.g.omni_sql_default_compl_type = 'syntax'
