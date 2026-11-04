@@ -1,34 +1,15 @@
 vim.pack.add({
   "https://github.com/neovim/nvim-lspconfig",
-
-  "https://github.com/rafamadriz/friendly-snippets",
   "https://github.com/mason-org/mason.nvim",
   "https://github.com/mason-org/mason-lspconfig.nvim",
 })
 
-require('mason').setup({
+require("mason").setup({
   registries = {
     "github:mason-org/mason-registry",
     "github:Crashdummyy/mason-registry",
   },
 })
-require("mason-lspconfig").setup()
-
--- vim.api.nvim_create_autocmd("VimEnter", {
---   desc = "Check Mason LSPs and update",
---   callback = function()
---     vim.schedule(function()
---       local registry = require("mason-registry")
---       registry.refresh(function()
---         local packages = registry.get_installed_packages()
---         for _, pkg in ipairs(packages) do
---           pkg:install(pkg)
---         end
---       end
---       )
---     end)
---   end
--- })
 
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'Enable LSP actions',
@@ -65,6 +46,14 @@ vim.lsp.config("expert", {
   root_markers = { 'mix.exs', '.git' },
   filetypes = { 'elixir', 'eelixir', 'heex' }
 })
+
+local servers = {
+  "expert", "gopls", "lua_ls", "pyright", "ruff", "omnisharp", "sqls",
+  "ts_ls", "svelte", "tailwindcss", "html", "cssls", "jsonls", "yamlls", "buf_ls",
+}
+
+require("mason-lspconfig").setup()
+vim.lsp.enable(servers)
 
 vim.o.autocomplete = true
 vim.cmd [[

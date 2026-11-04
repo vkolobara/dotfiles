@@ -9,5 +9,5 @@ cursor_border = '#ff4e66'
 selection_bg = '#3a1620'
 selection_fg = '#e6edf7'
 
-ansi = ['#0b0f1a', '#ff3c3f', '#76ff4e', '#ffd83c', '#f62e46', '#760010', '#ff4e66', '#ffe9ec']
-brights = ['#a59496', '#ff7a7c', '#9fff83', '#ffe683', '#ff687c', '#ff8393', '#ffafba', '#fff6f7']
+ansi = ['#0b0f1a', '#ff3c3f', '#76ff4e', '#ffd83c', '#f52c45', '#3a1620', '#ff4e66', '#ffe9ef']
+brights = ['#473b3f', '#ff7a7c', '#9fff83', '#ffe683', '#ff687c', '#ff8393', '#ffafba', '#fff6f8']

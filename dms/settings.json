@@ -1,0 +1,14 @@
+{
+  "currentThemeName": "custom",
+  "currentThemeCategory": "generic",
+  "customThemeFile": "{{env.HOME}}/.config/DankMaterialShell/themes/kanagawa.json",
+  "gtkThemingEnabled": true,
+  "qtThemingEnabled": true,
+  "matugenTemplateGtk": true,
+  "matugenTemplateNiri": true,
+  "matugenTemplateQt6ct": true,
+  "matugenTemplateKcolorscheme": true,
+  "matugenTemplateNeovim": false,
+  "matugenTemplateWezterm": false,
+  "matugenTemplateHyprland": false
+}
