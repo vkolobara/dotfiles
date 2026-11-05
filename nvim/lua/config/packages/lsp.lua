@@ -52,7 +52,7 @@ local servers = {
   "ts_ls", "svelte", "tailwindcss", "html", "cssls", "jsonls", "yamlls", "buf_ls",
 }
 
-require("mason-lspconfig").setup()
+require("mason-lspconfig").setup({ ensure_installed = servers })
 vim.lsp.enable(servers)
 
 vim.o.autocomplete = true
