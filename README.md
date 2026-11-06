@@ -1,6 +1,6 @@
 # Development setup with mise
 
-Fish, WezTerm, and Neovim configuration for Arch Linux and Apple Silicon macOS.
+Fish, Ghostty, Herdr, and Neovim configuration for Arch Linux and Apple Silicon macOS.
 Mise manages global Go, Python, and Node defaults, shared editor tools, AI CLIs,
 and native development packages. Other language toolchains and project-specific CLIs belong
 in each repository's mise configuration.
@@ -20,7 +20,7 @@ mise run default --brew --apply  # Apply Homebrew packages on Arch
 
 Arch uses pacman by default. macOS uses mise's native Homebrew package providers;
 Homebrew itself is optional. The `--brew` option selects Homebrew CLI packages on
-Arch while retaining its native WezTerm package. Intel Macs are not supported.
+Arch while retaining its native Ghostty package. Intel Macs are not supported.
 macOS needs Xcode command-line tools for compilation.
 
 Mise stops on conflicting configuration files. Move those files aside before
@@ -45,8 +45,10 @@ separately if it overrides mise.
 | `codex/`, `claude/`, `cursor/` | Selected AI preferences merged into local configuration |
 | `agents/AGENTS.md` | One shared source of personal agent instructions |
 | `agents/cursor-context.py`, `cursor/hooks.json` | Load shared instructions into local Cursor sessions |
+| `ghostty/config.ghostty` | Terminal font and theme; opens Herdr in the first window |
+| `herdr/` | Agent workspace config, pickers, task scripts, and the PR status plugin ([keys](herdr/KEYBOARD.md)) |
 
-Fish, Neovim, WezTerm, and the global mise configuration are linked on both
+Fish, Neovim, Ghostty, Herdr, and the global mise configuration are linked on both
 platforms. Niri is linked only on Linux, using an explicit OS selector. Niri and
 DMS must already be installed; this setup does not install or start desktop
 services. Monitor layout and other DMS-generated settings remain machine-specific
@@ -55,8 +57,8 @@ fonts are installed and configured by Arch setup.
 
 ### Fonts on Arch
 
-Programming uses SauceCodePro Nerd Font Mono, including in WezTerm and the
-desktop monospace setting. Terminal Neovim inherits WezTerm's font. Desktop text
+Programming uses SauceCodePro Nerd Font Mono, including in Ghostty and the
+desktop monospace setting. Terminal Neovim inherits Ghostty's font. Desktop text
 uses Adwaita Sans, documents use Noto Sans, and the generic serif family uses
 Noto Serif. Fontconfig adds Nerd Font symbols, Noto language coverage (including
 CJK), and color emoji as fallbacks. Applications and websites that select their
@@ -86,8 +88,7 @@ Historical package snapshots in `docs/inventory/` are reference material only.
 
 Kanagawa Wave is used across terminal apps and the Linux desktop. DMS provides
 Wave for dark mode and Lotus for light mode, and generates GTK, Qt/KDE, and Niri
-colors. Neovim and WezTerm use native Kanagawa themes. Existing alternative
-WezTerm palettes remain available.
+colors. Neovim, Ghostty, and Herdr use native Kanagawa themes.
 
 After installing packages, run `mise run theme` to deploy and refresh the theme.
 DMS must already be running on Linux. Restart applications that cache colors;

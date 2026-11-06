@@ -12,7 +12,6 @@ require("fidget").setup {}
 require("nvim-autopairs").setup {}
 
 require("config.packages.fzf")
-require("config.packages.wezterm")
 require("config.packages.oil")
 require("config.packages.treesitter")
 require("config.packages.lsp")

@@ -1,0 +1,23 @@
+id = "vkolobara.pr-status"
+name = "PR status"
+version = "0.1.0"
+min_herdr_version = "0.9.5"
+description = "Show each workspace's GitHub PR and CI state as sidebar tokens"
+platforms = ["linux", "macos"]
+
+# No polling daemon: refresh when the session starts and whenever you move around or an agent
+# changes state. pr-status.sh throttles itself, so frequent events cost one gh call per minute.
+[[startup]]
+command = ["bash", "pr-status.sh"]
+
+[[events]]
+on = "workspace.focused"
+command = ["bash", "pr-status.sh"]
+
+[[events]]
+on = "workspace.created"
+command = ["bash", "pr-status.sh"]
+
+[[events]]
+on = "pane.agent_status_changed"
+command = ["bash", "pr-status.sh"]

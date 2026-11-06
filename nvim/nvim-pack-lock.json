@@ -128,10 +128,6 @@
     "vim-moonfly-colors": {
       "rev": "261664f92ed51cf0c077555b2d4b2530307eac17",
       "src": "https://github.com/bluz71/vim-moonfly-colors"
-    },
-    "wezterm.nvim": {
-      "rev": "032c33b621b96cc7228955b4352b48141c482098",
-      "src": "https://github.com/willothy/wezterm.nvim"
     }
   }
 }

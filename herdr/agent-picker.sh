@@ -2,7 +2,9 @@
 # Fuzzy agent picker for herdr: sorted by status (needs-attention first), then most recent activity.
 # Herdr exposes no timestamps, so "last update" is the mtime of the agent's Claude session log.
 # shortcut: non-Claude agents have no session log and show "-"; add their log paths if you use other agents.
-# Keys: enter focuses the agent, ctrl-d closes its pane (kills the agent) and refreshes the list.
+# The preview shows the highlighted agent's recent output.
+# Keys: enter focuses the agent; tab marks agents; ctrl-r sends one prompt to the marked agents
+# (or the highlighted one); ctrl-d closes the pane (kills the agent). Both refresh the list.
 set -euo pipefail
 
 list() {
@@ -18,7 +20,8 @@ list() {
     mtime=0
     if [[ -n $session ]]; then
       for f in ~/.claude/projects/*/"$session".jsonl; do
-        [[ -e $f ]] && mtime=$(stat -f %m "$f")
+        # GNU stat first; BSD stat (macOS) rejects -c and falls back to -f.
+        [[ -e $f ]] && mtime=$(stat -c %Y "$f" 2>/dev/null || stat -f %m "$f")
       done
     fi
     printf '%s\t%s\t%s\t%s\t%s\t%s\n' "$rank" "$mtime" "$pane" "$status" "$name" "$repo"
@@ -32,12 +35,28 @@ list() {
   }'
 }
 
+# reply PANE...: read one line from the terminal and submit it to each agent.
+# Herdr refuses to type into an agent that is waiting on a question; those are reported, not retried.
+reply() {
+  local text failed=()
+  read -rep "prompt for $# agent(s)> " text
+  [[ -n $text ]] || return 0
+  for pane; do herdr agent prompt "$pane" "$text" >/dev/null 2>&1 || failed+=("$pane"); done
+  if (( ${#failed[@]} )); then
+    echo "Not sent to ${failed[*]}: blocked or gone; press enter on it in the picker to answer it there."
+    read -rsn1 -p 'Press a key.' || true
+  fi
+}
+
 if [[ ${1:-} == list ]]; then list; exit; fi
+if [[ ${1:-} == reply ]]; then shift; reply "$@"; exit; fi
 
 self=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
 list |
-fzf --delimiter='\t' --with-nth=2 --no-sort \
-    --header="$(printf '%-9s %-6s %-48s %s' STATUS AGE AGENT REPO)" \
+fzf --delimiter='\t' --with-nth=2 --no-sort --multi \
+    --header="$(printf 'enter focus · tab mark · ctrl-r prompt · ctrl-d close\n%-9s %-6s %-48s %s' STATUS AGE AGENT REPO)" \
     --prompt='agent> ' --with-shell='bash -c' \
+    --preview='herdr agent read {1} --lines 60' --preview-window='down,55%,follow' \
+    --bind "ctrl-r:execute('$self' reply {+1})+deselect-all+reload('$self' list)" \
     --bind "ctrl-d:execute-silent(herdr pane close \$(echo {1}))+reload('$self' list)" |
-cut -f1 | xargs -r herdr agent focus
+head -n1 | cut -f1 | xargs -r herdr agent focus
