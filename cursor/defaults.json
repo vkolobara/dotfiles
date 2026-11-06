@@ -1,0 +1,19 @@
+{
+  "attribution": {
+    "attributeCommitsToAgent": true,
+    "attributePRsToAgent": true
+  },
+  "display": {
+    "showLineNumbers": false,
+    "showThinkingBlocks": false,
+    "showStatusIndicators": false,
+    "showStatusLineRunningTime": false,
+    "mode": "zen"
+  },
+  "editor": {
+    "vimMode": false
+  },
+  "hints": true,
+  "notifications": true,
+  "steering": true
+}

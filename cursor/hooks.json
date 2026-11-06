@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "command": "python3 ./hooks/shared-instructions.py"
+      },
+      {
+        "command": "bash ./herdr-agent-state.sh session"
+      }
+    ]
+  }
+}

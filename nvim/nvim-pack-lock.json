@@ -6,8 +6,7 @@
     },
     "blink.cmp": {
       "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
-      "src": "https://github.com/saghen/blink.cmp",
-      "version": "1.0.0 - 2.0.0"
+      "src": "ssh://git@github.com/saghen/blink.cmp"
     },
     "conform.nvim": {
       "rev": "dca1a190aa85f9065979ef35802fb77131911106",
@@ -15,7 +14,7 @@
     },
     "conjure": {
       "rev": "f7a375995a19fbf085707ea0fdb1f9c167e27e27",
-      "src": "https://github.com/Olical/conjure"
+      "src": "ssh://git@github.com/Olical/conjure"
     },
     "diffview.nvim": {
       "rev": "4516612fe98ff56ae0415a259ff6361a89419b0a",
@@ -23,7 +22,7 @@
     },
     "everforest": {
       "rev": "aeef62ee97872d2557d25904d160ec93a4a355f8",
-      "src": "https://github.com/sainnhe/everforest"
+      "src": "ssh://git@github.com/sainnhe/everforest"
     },
     "fidget.nvim": {
       "rev": "889e2e96edef4e144965571d46f7a77bcc4d0ddf",
@@ -31,7 +30,7 @@
     },
     "friendly-snippets": {
       "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
-      "src": "https://github.com/rafamadriz/friendly-snippets"
+      "src": "ssh://git@github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
       "rev": "44816af2465bb0a17ae0f1f2d8a4f9c3df524fcd",
@@ -43,7 +42,7 @@
     },
     "kanagawa.nvim": {
       "rev": "bb85e4bfc8d89b0e62c8fa53ccdd13d12e2f77b3",
-      "src": "https://github.com/rebelot/kanagawa.nvim"
+      "src": "ssh://git@github.com/rebelot/kanagawa.nvim"
     },
     "lualine.nvim": {
       "rev": "131a558e13f9f28b15cd235557150ccb23f89286",
@@ -51,19 +50,19 @@
     },
     "mason-lspconfig.nvim": {
       "rev": "51feb0ada33d18f3c5c71ffb46005dbf8b33bef4",
-      "src": "https://github.com/mason-org/mason-lspconfig.nvim"
+      "src": "ssh://git@github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason-nvim-dap.nvim": {
       "rev": "9a10e096703966335bd5c46c8c875d5b0690dade",
-      "src": "https://github.com/jay-babu/mason-nvim-dap.nvim"
+      "src": "ssh://git@github.com/jay-babu/mason-nvim-dap.nvim"
     },
     "mason.nvim": {
       "rev": "e54f5bf5f12c560da31c17eee5b3e1bd369f3ff9",
-      "src": "https://github.com/mason-org/mason.nvim"
+      "src": "ssh://git@github.com/mason-org/mason.nvim"
     },
     "modus-themes.nvim": {
       "rev": "17a64464c27c1be605adca13dbe48f2f402fe107",
-      "src": "https://github.com/miikanissi/modus-themes.nvim"
+      "src": "ssh://git@github.com/miikanissi/modus-themes.nvim"
     },
     "neogit": {
       "rev": "43ea1a0854052e583f647e0b35879f0158a70a78",
@@ -75,7 +74,7 @@
     },
     "nvim-dap": {
       "rev": "45a69eba683a2c448dd9ecfc4de89511f0646b5f",
-      "src": "https://github.com/mfussenegger/nvim-dap"
+      "src": "ssh://git@github.com/mfussenegger/nvim-dap"
     },
     "nvim-lspconfig": {
       "rev": "451d4ef9abd4f0f08e379ef0d55d1c391b6125a7",
@@ -120,7 +119,7 @@
     },
     "vim-dadbod-completion": {
       "rev": "a8dac0b3cf6132c80dc9b18bef36d4cf7a9e1fe6",
-      "src": "https://github.com/kristijanhusak/vim-dadbod-completion"
+      "src": "ssh://git@github.com/kristijanhusak/vim-dadbod-completion"
     },
     "vim-dadbod-ui": {
       "rev": "07e92e22114cc5b1ba4938d99897d85b58e20475",

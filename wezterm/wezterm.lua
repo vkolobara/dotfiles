@@ -7,13 +7,18 @@ config.disable_default_key_bindings = true
 config.enable_wayland = false
 config.adjust_window_size_when_changing_font_size = false
 
-config.window_decorations = "NONE"
+config.window_decorations = "RESIZE"
 
-config.font = wezterm.font_with_fallback({"SauceCodePro Nerd Font", "Noto Color Emoji"})
+config.font = wezterm.font_with_fallback({
+    "SauceCodePro Nerd Font Mono",
+    "Symbols Nerd Font Mono",
+    "Noto Color Emoji",
+})
 config.font_size = 16
 config.hide_tab_bar_if_only_one_tab = true
 config.color_scheme_dirs = {"~/.config/wezterm/colors"}
-config.color_scheme = 'moonfly'
+config.color_scheme = 'kanagawa-wave'
+config.force_reverse_video_cursor = true
 
 config.use_fancy_tab_bar = true
 config.tab_max_width = 32
@@ -30,7 +35,10 @@ wezterm.on('update-right-status', function(window, _)
     window:set_right_status(window:active_workspace())
 end)
 
-config.leader = { key = "b", mods = "CTRL" }
+local function is_herdr(pane)
+    local process = pane:get_foreground_process_info()
+    return process ~= nil and (process.executable or ''):match("([^/\\]+)$") == "herdr"
+end
 
 config.keys = {
     {
@@ -200,11 +208,6 @@ config.keys = {
         action = act.CloseCurrentPane { confirm = true }
     },
     {
-        key = "c",
-        mods = "LEADER",
-        action = act.SpawnTab 'CurrentPaneDomain'
-    },
-    {
         key = '[',
         mods = 'LEADER',
         action = act.ActivateCopyMode
@@ -212,7 +215,11 @@ config.keys = {
     {
         key = 'f',
         mods = 'ALT',
-        action = act.TogglePaneZoomState
+        action = wezterm.action_callback(function(window, pane)
+            window:perform_action(is_herdr(pane)
+                and act.SendKey { key = 'f', mods = 'ALT' }
+                or act.TogglePaneZoomState, pane)
+        end)
 
     },
     {
@@ -229,6 +236,43 @@ config.keys = {
         key = "L", mods = 'CTRL', action = act.ShowDebugOverlay
     }
 }
+
+-- A native leader intercepts Ctrl+B before Lua bindings can inspect the pane.
+-- Use a one-shot table instead, with the same one-second timeout and swallowing
+-- of unbound keys. Detect the foreground client on each press, not via inherited
+-- HERDR_ENV or window overrides that can become stale when changing panes.
+local prefix_keys = {}
+local direct_keys = {}
+for _, binding in ipairs(config.keys) do
+    if binding.mods == 'LEADER' then
+        binding.mods = 'NONE'
+        table.insert(prefix_keys, binding)
+    else
+        table.insert(direct_keys, binding)
+        if binding.mods == 'CTRL' and (binding.key == '=' or binding.key == '-') then
+            table.insert(prefix_keys, binding)
+        end
+    end
+end
+config.key_tables = { wezterm_prefix = prefix_keys }
+table.insert(direct_keys, {
+    key = 'b',
+    mods = 'CTRL',
+    action = wezterm.action_callback(function(window, pane)
+        if is_herdr(pane) then
+            window:perform_action(act.SendKey { key = 'b', mods = 'CTRL' }, pane)
+        else
+            window:perform_action(act.ActivateKeyTable {
+                name = 'wezterm_prefix',
+                one_shot = true,
+                timeout_milliseconds = 1000,
+                prevent_fallback = true,
+            }, pane)
+        end
+    end),
+})
+config.keys = direct_keys
+
 wezterm.on('user-var-changed', function(window, pane, name, value)
     local overrides = window:get_config_overrides() or {}
     if name == "ZEN_MODE" then

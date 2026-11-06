@@ -1,0 +1,8 @@
+{
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true
+  },
+  "autoScrollEnabled": true,
+  "autoContinueAtUsageLimit": false,
+  "remoteControlAtStartup": true
+}

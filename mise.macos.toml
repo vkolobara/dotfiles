@@ -1,0 +1,8 @@
+[vars]
+platform = "macos"
+
+[bootstrap.packages]
+"brew-cask:wezterm" = "latest"
+"brew-cask:firefox" = "latest"
+"brew-cask:bitwarden" = "latest"
+"brew:mpv" = "latest"
