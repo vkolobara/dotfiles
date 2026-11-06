@@ -52,6 +52,15 @@ width = "70%"
 height = "50%"
 description = "agents"
 
+# Fuzzy workspace picker: open workspaces plus git projects; a project opens as a new workspace.
+[[keys.command]]
+key = "prefix+t"
+type = "popup"
+command = "~/.config/herdr/workspace-picker.sh"
+width = "70%"
+height = "50%"
+description = "workspaces"
+
 [[keys.command]]
 key = "prefix+g"
 type = "popup"

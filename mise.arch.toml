@@ -3,6 +3,7 @@ platform = "arch"
 
 [bootstrap.packages]
 "pacman:wezterm" = "latest"
+"pacman:ghostty" = "latest"
 "pacman:firefox" = "latest"
 "pacman:bitwarden" = "latest"
 "pacman:dolphin" = "latest"

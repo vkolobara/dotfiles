@@ -1,0 +1,9 @@
+font-family = "SauceCodePro Nerd Font"
+
+# Built-in Kanagawa Wave matches wezterm/colors/kanagawa-wave.toml except for
+# the cursor and selection, which follow the WezTerm configuration below.
+theme = Kanagawa Wave
+cursor-color = cell-foreground
+cursor-text = cell-background
+selection-background = #2d4f67
+selection-foreground = #c8c093

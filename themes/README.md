@@ -18,7 +18,8 @@ for light mode; terminal applications deliberately stay on Wave.
   [derailed/k9s](https://github.com/derailed/k9s/blob/master/skins/kanagawa.yaml),
   Apache-2.0 licensed. See `k9s/LICENSE`.
 - Atuin, Lazygit, btop, fzf, Delta, and Claude use mappings of Kanagawa's palette.
-  Herdr uses its built-in Kanagawa theme.
+  Herdr uses its built-in Kanagawa theme. Ghostty uses its built-in Kanagawa Wave
+  theme with WezTerm's cursor and selection colors.
 
 ## Deployment
 

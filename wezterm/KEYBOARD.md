@@ -10,8 +10,8 @@ leave a window-wide mode behind. Alt+F also passes through while Herdr is active
 
 | Task | Outside Herdr: WezTerm | Inside Herdr |
 | --- | --- | --- |
-| Workspace picker | Prefix, t | Prefix, w |
-| Project sessionizer | Prefix, Shift+T | — |
+| Workspace picker | Prefix, t | Prefix, t (fuzzy) or Prefix, w |
+| Project sessionizer | Prefix, Shift+T | Prefix, t (projects follow workspaces) |
 | New workspace | Prefix, i | Prefix, Shift+N |
 | Next / previous workspace | Prefix, n / p | Prefix, w, then Up / Down |
 | Find an agent or terminal | — | Prefix, g; / to search, Enter to jump |

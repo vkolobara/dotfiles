@@ -11,6 +11,7 @@ run_auto_install = false
 # Symlink whole files. Merge only when an app writes the file or several fragments share it.
 "~/.config/nvim" = { source = "nvim", mode = "symlink" }
 "~/.config/wezterm" = { source = "wezterm", mode = "symlink" }
+"~/.config/ghostty/config.ghostty" = { source = "ghostty/config.ghostty", mode = "symlink" }
 "~/.config/mise/config.toml" = { source = "mise/global.toml", mode = "symlink" }
 "~/.config/fish/config.fish" = { source = "shell/config.fish", mode = "symlink" }
 "~/.config/niri" = { source = "niri", mode = "symlink", variants = [{ os = "linux" }] }
@@ -19,6 +20,7 @@ run_auto_install = false
 "~/.config/atuin/config.toml" = { source = "atuin/config.toml", mode = "symlink" }
 "~/.config/herdr/config.toml" = { source = "herdr/config.toml", mode = "symlink" }
 "~/.config/herdr/agent-picker.sh" = { source = "herdr/agent-picker.sh", mode = "symlink" }
+"~/.config/herdr/workspace-picker.sh" = { source = "herdr/workspace-picker.sh", mode = "symlink" }
 "~/.config/fish/kanagawa.fish" = { source = "shell/kanagawa.fish", mode = "symlink" }
 "~/.config/atuin/themes/kanagawa.toml" = { source = "atuin/themes/kanagawa.toml", mode = "symlink" }
 "~/.config/bat/themes/kanagawa.tmTheme" = { source = "themes/kanagawa.tmTheme", mode = "symlink" }
