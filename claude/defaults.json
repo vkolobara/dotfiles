@@ -3,5 +3,6 @@
     "gopls-lsp@claude-plugins-official": true
   },
   "autoScrollEnabled": true,
-  "autoContinueAtUsageLimit": false
+  "autoContinueAtUsageLimit": false,
+  "remoteControlAtStartup": true
 }
