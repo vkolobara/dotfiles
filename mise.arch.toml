@@ -28,6 +28,7 @@ platform = "arch"
 "~/.config/DankMaterialShell/settings.json/theme" = { source = "dms/settings.json", template = "tera", merge = true }
 "~/.config/fontconfig/conf.d/99-programming-fonts.conf" = { source = "fonts/99-programming-fonts.conf", mode = "symlink" }
 "~/.config/DankMaterialShell/settings.json/fonts" = { source = "fonts/dms.json", merge = true }
+"~/.config/systemd/user/app-com.mitchellh.ghostty.service.d/override.conf" = { source = "systemd/ghostty/override.conf", mode = "symlink" }
 
 [tasks.fonts]
 description = "Apply Arch desktop fonts while preserving application settings"

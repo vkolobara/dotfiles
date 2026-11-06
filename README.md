@@ -46,6 +46,7 @@ separately if it overrides mise.
 | `agents/AGENTS.md` | One shared source of personal agent instructions |
 | `agents/cursor-context.py`, `cursor/hooks.json` | Load shared instructions into local Cursor sessions |
 | `ghostty/config.ghostty` | Terminal font and theme; opens Herdr in the first window |
+| `systemd/ghostty/override.conf` | Arch: lets the Ghostty user service start reliably for Niri's terminal key |
 | `herdr/` | Agent workspace config, pickers, task scripts, and the PR status plugin ([keys](herdr/KEYBOARD.md)) |
 
 Fish, Neovim, Ghostty, Herdr, and the global mise configuration are linked on both
