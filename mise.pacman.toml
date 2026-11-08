@@ -1,0 +1,27 @@
+[vars]
+package_manager = "pacman"
+
+[bootstrap.user]
+login_shell = "/usr/bin/fish"
+
+[bootstrap.packages]
+"pacman:base-devel" = "latest"
+"pacman:fish" = "latest"
+"pacman:git" = "latest"
+"pacman:curl" = "latest"
+"pacman:atuin" = "latest"
+"pacman:zoxide" = "latest"
+"pacman:fzf" = "latest"
+"pacman:fd" = "latest"
+"pacman:ripgrep" = "latest"
+"pacman:neovim" = "latest"
+"pacman:unzip" = "latest"
+"pacman:openssl" = "latest"
+"pacman:podman" = "latest"
+"pacman:github-cli" = "latest"
+"pacman:lazygit" = "latest"
+"pacman:git-delta" = "latest"
+"pacman:btop" = "latest"
+"pacman:just" = "latest"
+"pacman:bat" = "latest"
+"pacman:go-yq" = "latest"

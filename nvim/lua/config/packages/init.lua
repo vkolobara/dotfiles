@@ -23,7 +23,6 @@ require("config.packages.snacks")
 require("config.packages.conform")
 require("config.packages.ufo")
 require("config.packages.dadbod")
-require("config.packages.dap")
 require("config.packages.orgmode")
 require("config.packages.neogit")
 

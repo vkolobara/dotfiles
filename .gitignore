@@ -1,1 +1,7 @@
-tmux/plugins
+miserc.local.toml
+.miserc.local.toml
+mise.local.toml
+mise.*.local.toml
+nvim.log
+__pycache__/
+niri/config.kdl.*backup*

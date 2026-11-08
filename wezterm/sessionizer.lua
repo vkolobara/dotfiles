@@ -9,8 +9,11 @@ function file_exists(name)
 end
 
 local fd = "fd"
-if file_exists("/opt/homebrew/bin/fd") then
-	fd = "/opt/homebrew/bin/fd"
+for _, prefix in ipairs({ "/opt/homebrew/bin/", "/home/linuxbrew/.linuxbrew/bin/", "/usr/local/bin/", "/usr/bin/" }) do
+    if file_exists(prefix .. "fd") then
+        fd = prefix .. "fd"
+        break
+    end
 end
 
 M.toggle = function(window, pane)

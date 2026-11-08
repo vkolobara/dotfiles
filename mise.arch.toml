@@ -1,0 +1,43 @@
+[vars]
+platform = "arch"
+
+[bootstrap.packages]
+"pacman:wezterm" = "latest"
+"pacman:ghostty" = "latest"
+"pacman:firefox" = "latest"
+"pacman:bitwarden" = "latest"
+"pacman:dolphin" = "latest"
+"pacman:xdg-utils" = "latest"
+"pacman:mpv" = "latest"
+"pacman:wl-clipboard" = "latest"
+"pacman:pavucontrol" = "latest"
+"pacman:playerctl" = "latest"
+"pacman:brightnessctl" = "latest"
+"pacman:grim" = "latest"
+"pacman:slurp" = "latest"
+"pacman:adw-gtk-theme" = "latest"
+"pacman:qt6ct" = "latest"
+"pacman:adwaita-fonts" = "latest"
+"pacman:ttf-sourcecodepro-nerd" = "latest"
+"pacman:ttf-nerd-fonts-symbols" = "latest"
+"pacman:ttf-nerd-fonts-symbols-mono" = "latest"
+"pacman:noto-fonts" = "latest"
+"pacman:noto-fonts-cjk" = "latest"
+"pacman:noto-fonts-emoji" = "latest"
+
+[dotfiles]
+"~/.config/DankMaterialShell/settings.json/theme" = { source = "dms/settings.json", template = "tera", merge = true }
+"~/.config/fontconfig/conf.d/99-programming-fonts.conf" = { source = "fonts/99-programming-fonts.conf", mode = "symlink" }
+"~/.config/DankMaterialShell/settings.json/fonts" = { source = "fonts/dms.json", merge = true }
+
+[tasks.fonts]
+description = "Apply Arch desktop fonts while preserving application settings"
+run = [
+  'pacman -Q adwaita-fonts ttf-sourcecodepro-nerd ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-mono noto-fonts noto-fonts-cjk noto-fonts-emoji > /dev/null',
+  'mise -E arch dot apply ~/.config/fontconfig/conf.d/99-programming-fonts.conf ~/.config/DankMaterialShell/settings.json',
+  'python3 fonts/desktop.py',
+  'gsettings set org.gnome.desktop.interface font-name "Adwaita Sans 11"',
+  'gsettings set org.gnome.desktop.interface document-font-name "Noto Sans 11"',
+  'gsettings set org.gnome.desktop.interface monospace-font-name "SauceCodePro Nerd Font Mono 11"',
+  'fc-cache',
+]

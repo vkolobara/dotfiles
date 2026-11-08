@@ -1,0 +1,27 @@
+[vars]
+package_manager = "homebrew"
+brew_prefix = "{% if os() == 'linux' %}/home/linuxbrew/.linuxbrew{% else %}/opt/homebrew{% endif %}"
+
+[bootstrap.user]
+login_shell = "{{vars.brew_prefix}}/bin/fish"
+
+[bootstrap.packages]
+"brew:fish" = "latest"
+"brew:git" = "latest"
+"brew:curl" = "latest"
+"brew:atuin" = "latest"
+"brew:zoxide" = "latest"
+"brew:fzf" = "latest"
+"brew:fd" = "latest"
+"brew:ripgrep" = "latest"
+"brew:neovim" = "latest"
+"brew:openssl@3" = "latest"
+"brew:unzip" = "latest"
+"brew:podman" = "latest"
+"brew:gh" = "latest"
+"brew:lazygit" = "latest"
+"brew:git-delta" = "latest"
+"brew:btop" = "latest"
+"brew:just" = "latest"
+"brew:bat" = "latest"
+"brew:yq" = "latest"

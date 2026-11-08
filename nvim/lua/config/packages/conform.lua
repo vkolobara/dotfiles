@@ -4,10 +4,10 @@ vim.pack.add({
 
 require("conform").setup({
   formatters_by_ft = {
-    python = { "isort", "black" },
+    python = { "ruff_organize_imports", "ruff_format" },
     cs = { "csharpier" },
     go = { "gofmt" },
-    elixir = { "mix", args = "format", "--stdin", "$FILENAME" },
+    elixir = { "mix" },
     sql = { "sql_formatter" },
   },
   default_format_opts = {
