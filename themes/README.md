@@ -5,10 +5,9 @@ for light mode; terminal applications deliberately stay on Wave.
 
 ## Sources
 
-- `kanagawa.tmTheme`, Fish settings, and the WezTerm palette come from
+- `kanagawa.tmTheme` and Fish settings come from
   [rebelot/kanagawa.nvim](https://github.com/rebelot/kanagawa.nvim), MIT licensed.
-  The WezTerm palette was converted from Lua to TOML. Its cursor setting stays
-  in `wezterm.lua`. See `LICENSE.kanagawa`.
+  See `LICENSE.kanagawa`.
 - `dms/themes/kanagawa.json` adapts the `kanagawaWl` 1.0.0 theme by wirus from
   [the DMS registry](https://github.com/AvengeMedia/dms-plugin-registry/tree/master/themes/kanagawa-wl).
   Its dark palette uses cream text, Oni Violet (`#957fb8`) highlights, and
@@ -19,7 +18,7 @@ for light mode; terminal applications deliberately stay on Wave.
   Apache-2.0 licensed. See `k9s/LICENSE`.
 - Atuin, Lazygit, btop, fzf, Delta, and Claude use mappings of Kanagawa's palette.
   Herdr uses its built-in Kanagawa theme. Ghostty uses its built-in Kanagawa Wave
-  theme with WezTerm's cursor and selection colors.
+  theme with a reversed-video cursor and Kanagawa selection colors.
 
 ## Deployment
 
@@ -58,5 +57,4 @@ Cursor CLI detects the host terminal's dark background; its documented settings
 do not offer a custom Kanagawa palette.
 
 To restore a previous theme, change the tracked selectors and redeploy. Restore
-individual INI/CSS files from the timestamped backup if needed. Existing Moonfly
-and other WezTerm palette files remain available.
+individual INI/CSS files from the timestamped backup if needed.

@@ -10,7 +10,8 @@ run_auto_install = false
 [dotfiles]
 # Symlink whole files. Merge only when an app writes the file or several fragments share it.
 "~/.config/nvim" = { source = "nvim", mode = "symlink" }
-"~/.config/wezterm" = { source = "wezterm", mode = "symlink" }
+# WezTerm was replaced by Ghostty; remove the old config symlink from machines that still have it.
+"~/.config/wezterm" = { mode = "absent" }
 "~/.config/ghostty/config.ghostty" = { source = "ghostty/config.ghostty", mode = "symlink" }
 "~/.config/mise/config.toml" = { source = "mise/global.toml", mode = "symlink" }
 "~/.config/fish/config.fish" = { source = "shell/config.fish", mode = "symlink" }
@@ -21,6 +22,8 @@ run_auto_install = false
 "~/.config/herdr/config.toml" = { source = "herdr/config.toml", mode = "symlink" }
 "~/.config/herdr/agent-picker.sh" = { source = "herdr/agent-picker.sh", mode = "symlink" }
 "~/.config/herdr/workspace-picker.sh" = { source = "herdr/workspace-picker.sh", mode = "symlink" }
+"~/.config/herdr/task-launcher.sh" = { source = "herdr/task-launcher.sh", mode = "symlink" }
+"~/.config/herdr/task-teardown.sh" = { source = "herdr/task-teardown.sh", mode = "symlink" }
 "~/.config/fish/kanagawa.fish" = { source = "shell/kanagawa.fish", mode = "symlink" }
 "~/.config/atuin/themes/kanagawa.toml" = { source = "atuin/themes/kanagawa.toml", mode = "symlink" }
 "~/.config/bat/themes/kanagawa.tmTheme" = { source = "themes/kanagawa.tmTheme", mode = "symlink" }
@@ -38,6 +41,8 @@ run_auto_install = false
 "~/.claude/settings.json/updates" = { source = "claude/updates.json", merge = true }
 "~/.claude/statusline.sh" = { source = "claude/statusline.sh", mode = "symlink" }
 "~/.claude/settings.json/statusline" = { source = "claude/statusline.json", merge = true }
+# Keep the diff sidebar closed; it lives in the global state file, not settings.json.
+"~/.claude.json/diff-sidebar" = { source = "claude/diff-sidebar.json", merge = true }
 "~/.cursor/cli-config.json/defaults" = { source = "cursor/defaults.json", merge = "missing" }
 "~/.local/bin/agent" = { source = "shell/bin/agent", mode = "symlink" }
 "~/.config/agents/AGENTS.md" = { source = "agents/AGENTS.md", mode = "symlink" }
@@ -64,9 +69,22 @@ run_auto_install = false
 description = "Install global development tools after deploying configuration"
 run = [
   'mise --cd "$HOME" install',
+  'mise run herdr-setup',
   'python3 themes/apply.py',
   'bat cache --build',
   'if [ "{{os()}}" = "linux" ]; then mise -E arch run fonts; fi',
+]
+
+[tasks.herdr-setup]
+description = "Install herdr agent-state hooks and link the dotfiles' herdr plugins"
+# Herdr writes these hooks into each agent's own config, outside the dotfiles.
+# cursor/hooks.json already registers the hook, and the installer would append a
+# duplicate absolute-path entry through the symlink, so keep the tracked copy.
+run = [
+  'for agent in claude codex opencode pi; do mise --cd "$HOME" exec -- herdr integration install "$agent"; done',
+  'cp cursor/hooks.json "${TMPDIR:-/tmp}/cursor-hooks.json" && mise --cd "$HOME" exec -- herdr integration install cursor; cp "${TMPDIR:-/tmp}/cursor-hooks.json" cursor/hooks.json',
+  # Linked in place, so edits under herdr/plugins apply without relinking.
+  'mise --cd "$HOME" exec -- herdr plugin link "$PWD/herdr/plugins/pr-status"',
 ]
 
 [tasks.default]

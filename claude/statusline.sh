@@ -1,7 +1,23 @@
 #!/usr/bin/env bash
 # Claude Code status line: model, directory, context usage, and 5-hour and weekly subscription limits.
 # Colors follow the Kanagawa Wave palette; usage turns yellow at 50% and red at 80%.
-exec jq -r '
+# Inside a herdr pane it also reports the model and context use as the sidebar's $model and $ctx
+# tokens, in the background so the status line never waits on herdr. They expire shortly after
+# Claude stops refreshing them.
+input=$(cat)
+
+if [[ -n ${HERDR_PANE_ID:-} ]]; then
+  {
+    IFS=$'\t' read -r model ctx < <(jq -r '
+      (.context_window.used_percentage // 0 | round) as $p
+      | [(.model.display_name // ""),
+         "\(if $p >= 80 then "●" elif $p >= 50 then "◐" else "○" end) \($p)%"] | @tsv' <<<"$input")
+    "${HERDR_BIN_PATH:-herdr}" pane report-metadata "$HERDR_PANE_ID" --source claude-statusline \
+      --token "model=$model" --token "ctx=$ctx" --ttl-ms 120000
+  } >/dev/null 2>&1 &
+fi
+
+jq -r '
   def paint($rgb): "\u001b[38;2;\($rgb)m\(.)\u001b[0m";
   def violet: "149;127;184";
   def blue: "126;156;216";
@@ -24,4 +40,4 @@ exec jq -r '
     (.rate_limits.five_hour | limit("5h")),
     (.rate_limits.seven_day | limit("7d")) ]
   | join(" │ " | paint(gray))
-'
+' <<<"$input"

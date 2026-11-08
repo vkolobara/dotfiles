@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Fuzzy workspace picker for herdr, like WezTerm's workspace launcher plus sessionizer.
+# Fuzzy workspace picker for herdr: open workspaces plus a project sessionizer.
 # Lists open workspaces first, then git projects under $HOME that have no workspace yet.
 # Enter focuses the workspace, or creates one in the project directory, named after it.
 set -euo pipefail
@@ -8,7 +8,7 @@ workspaces=$(herdr workspace list | jq -r '.result.workspaces[] | [.workspace_id
 
 {
   awk -F'\t' '{ printf "%s\t%s\t* %s\n", $1, $2, $2 }' <<<"$workspaces"
-  # Same project search as wezterm/sessionizer.lua.
+  # Git repositories up to four levels below $HOME.
   fd -HI '^.git$' --max-depth=4 --prune --exclude .cache "$HOME/" |
     sed 's|/\.git/*$||' |
     awk -F'\t' '

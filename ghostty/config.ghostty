@@ -1,9 +1,14 @@
 font-family = "SauceCodePro Nerd Font"
 
-# Built-in Kanagawa Wave matches wezterm/colors/kanagawa-wave.toml except for
-# the cursor and selection, which follow the WezTerm configuration below.
+# Built-in Kanagawa Wave, with a reversed-video cursor and Kanagawa's selection colors.
 theme = Kanagawa Wave
 cursor-color = cell-foreground
 cursor-text = cell-background
 selection-background = #2d4f67
 selection-foreground = #c8c093
+
+# Start herdr inside fish in the first window, so quitting herdr leaves the shell open.
+initial-command = fish -C herdr
+
+# Close windows and quit without asking, even when a program is still running.
+confirm-close-surface = false
