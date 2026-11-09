@@ -13,6 +13,7 @@ run_auto_install = false
 # WezTerm was replaced by Ghostty; remove the old config symlink from machines that still have it.
 "~/.config/wezterm" = { mode = "absent" }
 "~/.config/ghostty/config.ghostty" = { source = "ghostty/config.ghostty", mode = "symlink" }
+"~/.config/ghostty/macos.ghostty" = { source = "ghostty/macos.ghostty", mode = "symlink", variants = [{ os = "macos" }] }
 "~/.config/mise/config.toml" = { source = "mise/global.toml", mode = "symlink" }
 "~/.config/fish/config.fish" = { source = "shell/config.fish", mode = "symlink" }
 "~/.config/niri" = { source = "niri", mode = "symlink", variants = [{ os = "linux" }] }
@@ -80,9 +81,10 @@ description = "Install herdr agent-state hooks and link the dotfiles' herdr plug
 # Herdr writes these hooks into each agent's own config, outside the dotfiles.
 # cursor/hooks.json already registers the hook, and the installer would append a
 # duplicate absolute-path entry through the symlink, so keep the tracked copy.
+# Agents whose CLI is not installed are skipped so one missing agent does not fail setup.
 run = [
-  'for agent in claude codex opencode pi; do mise --cd "$HOME" exec -- herdr integration install "$agent"; done',
-  'cp cursor/hooks.json "${TMPDIR:-/tmp}/cursor-hooks.json" && mise --cd "$HOME" exec -- herdr integration install cursor; cp "${TMPDIR:-/tmp}/cursor-hooks.json" cursor/hooks.json',
+  'for agent in claude codex opencode pi; do if mise --cd "$HOME" exec -- sh -c "command -v $agent" >/dev/null; then mise --cd "$HOME" exec -- herdr integration install "$agent"; else echo "herdr-setup: skipping $agent (not installed)"; fi; done',
+  'if mise --cd "$HOME" exec -- sh -c "command -v cursor-agent || command -v cursor" >/dev/null; then cp cursor/hooks.json "${TMPDIR:-/tmp}/cursor-hooks.json" && mise --cd "$HOME" exec -- herdr integration install cursor; cp "${TMPDIR:-/tmp}/cursor-hooks.json" cursor/hooks.json; else echo "herdr-setup: skipping cursor (not installed)"; fi',
   # Linked in place, so edits under herdr/plugins apply without relinking.
   'mise --cd "$HOME" exec -- herdr plugin link "$PWD/herdr/plugins/pr-status"',
 ]

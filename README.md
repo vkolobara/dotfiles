@@ -54,7 +54,7 @@ platforms. Niri is linked only on Linux, using an explicit OS selector. Niri and
 DMS must already be installed; this setup does not install or start desktop
 services. Monitor layout and other DMS-generated settings remain machine-specific
 files in the Niri configuration. Arch setup installs `wl-clipboard` for Neovim;
-fonts are installed and configured by Arch setup.
+fonts are installed by Arch and macOS setup and configured by Arch setup.
 
 ### Fonts on Arch
 
@@ -77,7 +77,13 @@ backing up changed files under `~/.local/state/dotfiles/backups/fonts-*`.
 DMS font keys are merged through mise; its other settings stay local. Restart
 open applications after applying. Qt font settings apply to applications using
 qt5ct/qt6ct; other applications can use Fontconfig or desktop portal settings.
-macOS font installation and desktop defaults are not managed here.
+
+### Fonts on macOS
+
+macOS setup installs the same font families as Homebrew casks. Ghostty, and
+Neovim through it, use SauceCodePro Nerd Font, as on Arch. Other applications
+can select the installed fonts themselves; macOS does not allow changing the
+system UI font, so desktop defaults are not managed here.
 
 Verify the desktop settings merge with `python3 -m unittest discover -s fonts`.
 

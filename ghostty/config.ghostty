@@ -1,4 +1,12 @@
 font-family = "SauceCodePro Nerd Font"
+# Fallbacks in the same order as fonts/99-programming-fonts.conf, so macOS uses the
+# installed Noto and Nerd Font symbols instead of its own system fonts.
+font-family = "Symbols Nerd Font Mono"
+font-family = "Noto Sans Mono"
+font-family = "Noto Color Emoji"
+font-family = "Noto Sans Mono CJK JP"
+# macOS renders thin text on non-Retina displays; this thickens it. Linux ignores it.
+font-thicken = true
 
 # Built-in Kanagawa Wave, with a reversed-video cursor and Kanagawa's selection colors.
 theme = Kanagawa Wave
@@ -12,3 +20,6 @@ initial-command = fish -C herdr
 
 # Close windows and quit without asking, even when a program is still running.
 confirm-close-surface = false
+
+# Platform overrides; the file exists only where setup links it.
+config-file = ?macos.ghostty
