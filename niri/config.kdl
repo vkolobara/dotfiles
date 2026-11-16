@@ -623,3 +623,10 @@ include "dms/colors.kdl"
 environment {
     QT_QPA_PLATFORMTHEME "qt6ct"
 }
+
+// Let apps raise their own window from a notification click, such as Ghostty from a
+// herdr notification. They request focus with an activation token whose serial niri
+// would otherwise reject as stale.
+debug {
+    honor-xdg-activation-with-invalid-serial
+}

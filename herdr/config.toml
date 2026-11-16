@@ -19,8 +19,10 @@ hide_tab_bar_when_single_tab = true
 window_title = "{workspace}: {terminal_title}"
 
 # Desktop notifications when a background agent blocks or finishes; prefix+o jumps to it.
+# "terminal" has Ghostty post them, so clicking one raises Ghostty on Linux and macOS.
+# "system" posts them as notify-send (no click action) or Script Editor (macOS) instead.
 [ui.toast]
-delivery = "system"
+delivery = "terminal"
 
 [experimental]
 # Keep pane scrollback across server restarts, alongside session.resume_agents_on_restore.
