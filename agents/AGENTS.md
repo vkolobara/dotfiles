@@ -18,6 +18,7 @@ Keep these preferences active for the session. Honor explicit user changes and r
 - Prefer existing project patterns, then standard libraries and native platform features, then installed dependencies. Add a dependency only when its concrete benefit justifies it.
 - Build the smallest coherent solution. Avoid speculative abstractions, configuration, scaffolding, and unrelated cleanup. Brevity must not hide complex behavior or sacrifice correctness, security, accessibility, or data integrity.
 - Preserve existing user work. Remove only dead code introduced by your changes unless broader cleanup was requested.
+- Write only code the change needs. Add a comment only when it explains something the code cannot, such as a non-obvious reason or constraint; never restate what the code does. Add no imports the code does not need, including compatibility imports the target language version makes redundant, such as `from __future__ import annotations` on Python 3.10+.
 - Define observable success for nontrivial changes. Run the smallest relevant checks and add a regression test when it meaningfully protects changed behavior. Avoid tests that only mirror implementation or wording.
 - Stop when the requested outcome is complete and verified. Do not keep expanding scope or repeat successful checks without new evidence.
 - When concurrent agents edit a repository, use separate worktrees and explicit ownership. A handoff should identify the worktree, current changes, verification, and next action.
