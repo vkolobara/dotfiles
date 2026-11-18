@@ -64,7 +64,10 @@ if [[ -e $path/mise.toml || -e $path/.mise.toml ]]; then mise trust --quiet "$pa
 if ! herdr agent start "$name" --kind "$agent" --pane "$pane" >/dev/null 2>&1; then
   # A new checkout path is untrusted, so the agent opens on its folder-trust question, which herdr
   # reports as blocked. Accept only that question; anything else is left for you in the pane.
-  if herdr agent read "$name" --lines 40 | grep -qi 'trust'; then
+  screen=$(herdr agent read "$name" --lines 40)
+  if grep -qi 'trust' <<<"$screen"; then
+    # Claude preselects "No, exit", so move to the accepting option before confirming.
+    if grep -q '❯ No' <<<"$screen"; then herdr agent send-keys "$name" down >/dev/null; fi
     herdr agent send-keys "$name" enter >/dev/null
     herdr agent wait "$name" --until idle --timeout 60000 >/dev/null
   else

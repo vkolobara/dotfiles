@@ -109,6 +109,16 @@ width = "70%"
 height = "50%"
 description = "new task"
 
+# Task board: every worktree of the focused repo with its agents, progress, git state, and PR;
+# open, remove, or prune finished ones from one place.
+[[keys.command]]
+key = "prefix+alt+w"
+type = "popup"
+command = "~/.config/herdr/task-board.sh"
+width = "95%"
+height = "90%"
+description = "task board"
+
 # Finish a task: remove the active worktree checkout, keeping its branch.
 [[keys.command]]
 key = "prefix+alt+x"
@@ -118,7 +128,8 @@ width = "70%"
 height = "60%"
 description = "finish task"
 
-# Agent rows: status and agent with Claude's model and context use, the agent's title, then workspace and tab.
+# Agent rows: status and agent with Claude's model and context use, the agent's title, its reported
+# progress, then workspace and tab.
 # $model and $ctx come from claude/statusline.sh; other agents simply omit them.
 # $ctx leads with ○ below 50%, ◐ from 50%, and ● from 80%, matching the status line's colors.
 # Name agents yourself with `herdr agent rename <pane> <name>`; the agent picker shows that name first.
@@ -133,6 +144,11 @@ rows = [
     ] },
   ],
   [{ token = "terminal_title_stripped", fg = "#7E9CD8", bold = true }],
+  # $task is what the agent last reported with task-progress; the row collapses when it has none.
+  [{ token = "$task", dim = true, rules = [
+    { starts_with = "blocked", fg = "#FF5D62", dim = false },
+    { starts_with = "done", fg = "#98BB6C", dim = false },
+  ] }],
   [{ token = "workspace", dim = true }, { token = "tab", dim = true }],
 ]
 

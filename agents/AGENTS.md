@@ -22,6 +22,7 @@ Keep these preferences active for the session. Honor explicit user changes and r
 - Define observable success for nontrivial changes. Run the smallest relevant checks and add a regression test when it meaningfully protects changed behavior. Avoid tests that only mirror implementation or wording.
 - Stop when the requested outcome is complete and verified. Do not keep expanding scope or repeat successful checks without new evidence.
 - When concurrent agents edit a repository, use separate worktrees and explicit ownership. A handoff should identify the worktree, current changes, verification, and next action.
+- Inside herdr (`HERDR_ENV=1`), report progress on multi-step work with `task-progress` so the task board shows it: `task-progress 2/5 "writing tests"` after planning and after each step, `task-progress blocked "<what you need>"` before waiting on the user, and `task-progress done "<one-line outcome>"` when finished.
 
 ## Workflow skills
 

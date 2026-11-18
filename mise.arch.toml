@@ -23,6 +23,10 @@ platform = "arch"
 "pacman:noto-fonts" = "latest"
 "pacman:noto-fonts-cjk" = "latest"
 "pacman:noto-fonts-emoji" = "latest"
+# Install the client daemon once with `sudo netbird service install && sudo netbird service start`.
+# It uses the default socket, unlike the packaged netbird@.service.
+"aur:netbird-bin" = "latest"
+"aur:netbird-ui-bin" = "latest"
 
 [dotfiles]
 "~/.config/DankMaterialShell/settings.json/theme" = { source = "dms/settings.json", template = "tera", merge = true }

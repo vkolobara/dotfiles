@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Record how far the current task is, for the herdr task board and the agent sidebar's $task token.
+# Usage: task-progress <done>/<total> <current step> | done <summary> | blocked <reason>
+# With no arguments, prints the recorded progress.
+# The note lives in the checkout's own git dir, so it is never a change and goes away with the worktree.
+set -euo pipefail
+
+file=$(git rev-parse --path-format=absolute --git-path task-progress)
+if (( $# == 0 )); then cat "$file" 2>/dev/null || true; exit; fi
+echo "$*" >"$file"
+if [[ -n ${HERDR_PANE_ID:-} ]]; then
+  "${HERDR_BIN_PATH:-herdr}" pane report-metadata "$HERDR_PANE_ID" --source task-progress --token "task=$*" >/dev/null 2>&1 || true
+fi

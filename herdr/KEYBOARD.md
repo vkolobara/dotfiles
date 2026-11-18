@@ -14,11 +14,19 @@ active binding. This guide covers the defaults in use plus the custom bindings i
 | Next / previous agent | Prefix, n / p |
 | Jump to the latest notification | Prefix, o |
 | New task: worktree, agent, first prompt | Prefix, Alt+N |
+| Task board: all worktrees of the repo, progress, cleanup | Prefix, Alt+W |
 | Finish task: remove its worktree, keep the branch | Prefix, Alt+X |
 
 In the agent picker, Enter focuses the agent, Tab marks agents, Ctrl+R sends one
 prompt to the marked agents (or the highlighted one), and Ctrl+D closes the
 agent's pane. The lower half previews the highlighted agent's recent output.
+
+The task board lists every worktree of the focused repo with its agents, the
+progress they last reported with `task-progress`, uncommitted (M) and unpushed
+(↑) counts, and the PR. Enter focuses the worktree (opening it if closed), Tab
+marks rows, Ctrl+X removes the marked worktrees, Alt+M removes every clean,
+fully pushed worktree whose PR is merged or closed, and Ctrl+L refreshes.
+Removal always shows what would be lost and asks first; branches are kept.
 
 The new-task prompt takes a branch name, a task title, or a PR (`#123` or its
 URL). A PR opens its head branch in a worktree and has Claude run

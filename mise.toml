@@ -25,6 +25,7 @@ run_auto_install = false
 "~/.config/herdr/workspace-picker.sh" = { source = "herdr/workspace-picker.sh", mode = "symlink" }
 "~/.config/herdr/task-launcher.sh" = { source = "herdr/task-launcher.sh", mode = "symlink" }
 "~/.config/herdr/task-teardown.sh" = { source = "herdr/task-teardown.sh", mode = "symlink" }
+"~/.config/herdr/task-board.sh" = { source = "herdr/task-board.sh", mode = "symlink" }
 "~/.config/fish/kanagawa.fish" = { source = "shell/kanagawa.fish", mode = "symlink" }
 "~/.config/atuin/themes/kanagawa.toml" = { source = "atuin/themes/kanagawa.toml", mode = "symlink" }
 "~/.config/bat/themes/kanagawa.tmTheme" = { source = "themes/kanagawa.tmTheme", mode = "symlink" }
@@ -46,6 +47,7 @@ run_auto_install = false
 "~/.claude.json/diff-sidebar" = { source = "claude/diff-sidebar.json", merge = true }
 "~/.cursor/cli-config.json/defaults" = { source = "cursor/defaults.json", merge = "missing" }
 "~/.local/bin/agent" = { source = "shell/bin/agent", mode = "symlink" }
+"~/.local/bin/task-progress" = { source = "shell/bin/task-progress", mode = "symlink" }
 "~/.config/agents/AGENTS.md" = { source = "agents/AGENTS.md", mode = "symlink" }
 "~/.codex/AGENTS.md" = { source = "agents/AGENTS.md", mode = "symlink" }
 "~/.claude/CLAUDE.md" = { source = "agents/AGENTS.md", mode = "symlink" }
